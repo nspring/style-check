@@ -118,7 +118,7 @@ end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
 # though newcommand could gobble both parameters...
-De_command = Regexp.new('(~?\\\\(ref|href|url|input|todo|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
+De_command = Regexp.new('(~?\\\\(ref|href|todo|done|wontfix|url|input|todo|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$')
 
