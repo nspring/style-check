@@ -120,6 +120,7 @@ De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
 # though newcommand could gobble both parameters...
 De_command = Regexp.new('(~?\\\\(ref|href|url|input|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
+De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$|')
 
 def do_cns(line, file, linenum, phra_hash)
   # if line =~ /\\caption/ then
@@ -156,6 +157,7 @@ Input_files.each { |f|
       do_cns( ln, f, i+1, PreCensored_phrases )
       ln.gsub!(De_command, '~')
       ln.gsub!(De_verb, '')
+      ln.gsub!(De_math, '')
       do_cns( (ln + ( lines[i+1] or "" )).sub(De_comment, '').sub(De_command, '~'), f, i+1, Censored_phrases )
       
       # now try to make sure that paragraphs end with sentence
