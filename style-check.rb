@@ -122,9 +122,12 @@ De_command = Regexp.new('(~?\\\\(ref|href|url|input|cite|nocite|cline|newcommand
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 
 def do_cns(line, file, linenum, phra_hash)
+  # if line =~ /\\caption/ then
+    # puts "validating: '#{line}'"
+  # end
   m = nil
   r = nil # so we can keep it as a side-effect of the detect call
-  if(phra_hash.keys.detect { |r| m = r.match(line) } ) then
+  if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
     puts "%s:%d: %s (%s)" % [ file, linenum, line.chomp, m ]
     if($VERBOSE && phra_hash[r]) then
       puts "  " + phra_hash[r]
@@ -150,9 +153,9 @@ Input_files.each { |f|
     end
     if(in_multiline_comment == 0)  then
       do_cns( ln, f, i+1, PreCensored_phrases )
-      ln.gsub!(De_command, '')
+      ln.gsub!(De_command, '~')
       ln.gsub!(De_verb, '')
-      do_cns( ln, f, i+1, Censored_phrases )
+      do_cns( (ln + ( lines[i+1] or "" )).sub(De_comment, '').sub(De_command, '~'), f, i+1, Censored_phrases )
       
       # now try to make sure that paragraphs end with sentence
       # ending punctuation, such as a period, exclamation mark,
