@@ -7,8 +7,8 @@ et\. al\.            % syntax use the \etal{} command, "et" needs no dot. (or wr
 i\)[^$]              % syntax leave the paren in math mode -- should be $i)$
 ii\)[^$]             % syntax leave the paren in math mode -- should be $ii)$
 iii\)[^$]            % syntax leave the paren in math mode -- should be $iii)$
-iv\)[^$]             % syntax leave the paren in math mode -- should be $iiv)$
+iv\)[^$]             % syntax leave the paren in math mode -- should be $iv)$
 v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
 \ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
 \ban [B-DF-GJ-NP-TV-Z][^A-Z] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
-\b[Aa] [aeiouAEIOU](?!ser|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, AA)
+\b[Aa] [aeiouAEIOU](?!ser|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, AA, n/a doesn't work)
