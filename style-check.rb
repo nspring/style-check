@@ -90,7 +90,7 @@ if(Censored_phrases.length == 0) then
 end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
-De_command = Regexp.new('(~?\\\\(ref|href|cite|nocite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?{[^{]*})')
+De_command = Regexp.new('(~?\\\\(ref|href|cite|nocite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 
 def do_cns(line, file, linenum, phra_hash)
   m = nil
@@ -114,9 +114,9 @@ Input_files.each { |f|
   lines.each_with_index { |ln,i|
     do_cns( ln, f, i+1, PctCensored_phrases )
     ln.sub!(De_comment, '')
-    if( ln =~ /\\begin{comment}/ ) then
+    if( ln =~ /\\begin\{comment\}/ ) then
       in_multiline_comment+=1
-    elsif( ln =~ /\\end{comment}/ ) then
+    elsif( ln =~ /\\end\{comment\}/ ) then
       in_multiline_comment-=1
     end
     if(in_multiline_comment == 0)  then
