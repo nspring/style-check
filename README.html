@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>How to use the style checker</title>
+  </head>
+
+  <body>
+    <h1>Why does this code exist?</h1> This code is a weapon
+    against collaborators who would dilute your writing with
+    ambiguous or verbose prose.  It is designed to ensure that
+    collaborative papers appear in a consistenst style: mine.
+
+    <p>I think of all activities as coding.  My presentations
+    use python scripts, not powerpoint.  My writing and
+    research posters use latex and emacs, not word or
+    publisher.  When I write code, I try to be creative and
+    sloppy, relying on tools to identify most of my
+    mistakes.  (For example gcc issues warnings, splint can
+    verify some memory processes, custom scripts can
+    identify simple portability problems, etc.)  When
+    writing text, I had no such tools.
+
+    <p>The style checker is one such tool.  When I make a
+    mistake in my work that can be identified by a regular
+    expression, or notice one in papers I read, I add a
+    forbidden expression to the style checker's ruleset.
+    Then, when I build my latex-formatted paper, I run the
+    style checker to seek out such phrases.
+
+    <p>It has saved me from submitting gramatically-sloppy
+    last-minute edits.
+
+    <p>Like the warnings printed by a compiler, errors from
+    the style checker should not be taken literally.  Use
+    your own judgement to correct sentences: make them
+    shorter, more specific, more varied.
+
+    <h1>How does it work?</h1> The style checker is a ruby
+    script that seeks out files in directories
+    /etc/style-check.d or ~/.style-check.d, or files named
+    ~/.style-censor or ./style-censor.  Each file is a list
+    of expressions in one of four types, annotated with a
+    justification.  See the existing files for examples.
+    
+    <h2>Type 1: Syntax</h2> Syntax expressions are matched
+    exactly. They are case-sensitive.  Any regular
+    expression will do.  As a hint "\b" will match some
+    non-word character, like a space or newline.
+
+    <h2>Type 2: Capitalize</h2> Capitalize expressions match
+    whole words, and are case-sensitive.  Such expressions
+    are designed to help maintain uniformity of
+    capitalization of product and project names, like
+    PlanetLab, Scriptroute, CoDeeN, iPod, etc.  They are
+    transparently wrapped with "\b"s to ensure that only
+    whole words are matched.
+
+    <h2>Type 3: Phrase</h2> Phrases match longer phrases
+    such as "the foreseeable future". As with capitalize
+    expressions, they are transparently wrapped with "\b"s,
+    but are not case sensitive.  Some phrases that should
+    be forbidden include double words.
+
+    <h2>Type 4: Spelling</h2> Spelling expressions are
+    internally handled just like phrases.  These are useful
+    for common misspellings or typo's.  Perhaps you habitually
+    misspell lose as loose and would prefer to have a checker
+    complain.  I habitually misspell measurment, secrurity,
+    and experiements.
+
+    <p>The style checker also seeks out common errors within
+    the LaTeX source itself: <ul> 
+
+      <li>an unescaped percent-sign directly following a
+    number is frequently an error.</li>
+      <li>a \cite{} tag should precede a period.</li>
+      <li>a \cite{} tag should not be used obviously as a noun in 
+        the middle of a sentence.</li>
+      <li>paragraphs should end with the end of a sentence.</li>
+      </ul>
+
+    <p>Comments using \begin{comment} and \end{comment} from 
+    comment.sty are skipped.
+
+    <h1>How do I use it?</h1> 
+
+    <tt>style-check.rb *.tex</tt>
+
+    <p>Or, if you'd like to see the method behind the madness,<br> 
+    <tt>style-check.rb -v *.tex</tt>
+
+    <h1>Limitations</h1> This is not a proof-reader, editor,
+    spelling checker, or grammar checker.  It can catch only
+    some simple, common, frustrating mistakes.  It is not a
+    substitude for reading what I've listed below.  It is intended
+    only for LaTeX files.
+
+    <p>This code will not teach you to use "that" and
+    "which" properly.  It will not teach you to hyphenate.
+    It may be used for evil.  You may think my rules are
+    stupid.
+
+    <p>There are many bugs in the code; it is not guaranteed
+    that the style checker will find all forbidden phrases.
+
+    <h1>Further Reading</h1> This section is split into two
+    categories -- entertainment for reading that is light
+    and fun and should help you think about writing better,
+    and reference that may help answer harder questions.
+    
+    <h2>Entertainment</h2>
+    The Elements of Style, by Strunk and White<br>
+    <a href="http://www.bartleby.com/141/">http://www.bartleby.com/141/</a>
+
+    <p>Woe is I: The Grammarphobe's Guide to Better English in Plain English, by Patricia T. O'Conner.
+    
+    <p>Lake Superior State University Banished Words List<br>
+    <a href="http://www.lssu.edu/banished/">http://www.lssu.edu/banished/</a>
+    
+    <h2>Reference</h2>
+    <p>Rules for Writers, by Diana Hacker.
+    <p>The New Oxford Guide to Writing, by Thomas S. Kane.
+
+    <h2>Thanks</h2>
+    <p>Kurt Partridge for encouraging me to release this thing. 
+    
+    <hr>
+    <address><a href="mailto:nspring@cs.washington.edu">Neil Spring</a></address>
+<!-- Created: Wed May 12 13:50:54 PDT 2004 -->
+<!-- hhmts start -->
+Last modified: Wed May 12 14:43:54 PDT 2004
+<!-- hhmts end -->
+  </body>
+</html>

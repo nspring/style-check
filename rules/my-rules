@@ -1,0 +1,191 @@
+ a the               % phrase double article
+ pt                  % syntax ? I guess avoid straggling pt's that escape tex?
+[ ],                 % syntax whitespace before comma seems wrong.
+#  such may be abused to blacklist certain words even spelled correctly.
+# capitalize is case sensitive, and also bracketed by non-word.
+# phrase and spelling are case insensitive, but bracketed by non-word characters.
+# syntax is case sensitive but not bracketed by non-word; probably best if used with regexes.
+''[\.,]              % syntax end quotes go outside punctuation like . and ,
+EBONE                % capitalize a somewhat useless rule, now (we standardized on Ebone)
+EBone                % capitalize a somewhat useless rule, now (we standardized on Ebone)
+Figure Figure        % phrase pizza pizza.
+IPs                  % phrase should be IP addresses
+NMI                  % spelling is Steve's cat's name, not a measurement system
+Planetlab            % capitalize PlanetLab
+Send-Train           % capitalize should be Send-train 
+UUNET                % capitalize UUnet
+[ ]-[ ]              % syntax a hyphen surrounded by space should probably be an emdash '--'
+[0-9]-[0-9]          % syntax use an emdash '--' for ranges
+[0-9]ms              % syntax put a space between the number and the unit.
+[Rr]ate-limits       % spelling "rate limits" has no hyphen, only "rate-limited"
+[^egs]\. [a-z]       % syntax a period usually ends a sentence, and sentences should start with a captial; doesn't apply when an acronym.
+[a-z] Tier           % syntax don't capitalize Tier unless at the beginning of the sentence
+[a-z]\.\.            % syntax double period is rarely right, use \ldots for ellipsis
+\"                   % syntax use fancy quotes
+\.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a captial; doesn't apply when an acronym.
+\\etal[^{]           % syntax it's good practice to use \etal{} to avoid bad spacing
+\beg\.               % syntax should be e.g. as in "examples given"
+``no-valley''        % spelling should not be quoted, it's distracting
+a large number of    % phrase you mean "many"
+a substantial number of % phrase how substantial?  most?  or just enough that can't be ignored?
+a significant number of % phrase one is significant.   consider "prohibitive" if the number is sufficient to be problematic.
+a number of          % phrase as opposed to "a letter of?"
+a number of different % phrase use "different" (should have a high score)
+a small number of    % phrase you mean "few"
+actually             % spelling probably doesn't add
+and instead          % phrase replace with but?
+asess                % spelling
+be done              % phrase if "X of Y can be done", try "Y can be Xed"; it's already passive tense.
+behavioral           % spelling I'm convinced we don't use this word properly.
+best effort          % phrase hyphenate best-effort service.
+bpf                  % capitalize
+ccdf                 % capitalize
+cisco                % capitalize the company name
+city-pairs           % phrase decided to hyphenate
+combining multiple   % phrase as opposed to "combining one?"
+counting the number of  % phrase counting.  dude.
+deliver route        % phrase jargon redundancy
+do this              % phrase probably verbose if you use a pronoun for what you're doing
+don't                % spelling do not
+elimintate           % spelling
+enginner             % spelling
+et al\.[^}]          % syntax use the \etal{} command instead.
+et\. al\.            % syntax use the \etal{} command, "et" needs no dot.
+exists               % phrase probably no better than "is"?
+experiements         % spelling
+fashion              % spelling hrm
+from to\b            % phrase haven't used this properly.
+help help            % phrase double word, that probably means the author paniced
+i\)[^$]              % syntax leave the paren in math mode -- should be $i)$
+if it is to          % phrase should be "to" (usually followed by "be X")
+if they are to       % phrase should be "to" (usually followed by "be X")
+ii\)[^$]             % syntax leave the paren in math mode -- should be $ii)$
+iii\)[^$]            % syntax leave the paren in math mode -- should be $iii)$
+in different continents   % phrase ON different continents, IN different countries
+in general           % phrase unless matched with "in specific," this is usually useless
+in order to          % phrase remove "in order" and get "to"
+in the past          % phrase past tense is likely enough.
+in the way of        % phrase should be "as"
+interdomain          % spelling inter-domain
+internet             % capitalize unless talking about an internet other than the Internet
+intradomain          % spelling intra-domain
+is permitted to      % phrase "may"
+iv\)[^$]             % syntax leave the paren in math mode -- should be $iiv)$
+largely opaque       % phrase largely does not modify opaque
+load\bbalanc         % syntax load-balanced links, hyphenate load-balancing too
+log-normal           % spelling lognormal is one word.
+magic-packet         % spelling don't hyphenate
+makes a new          % phrase should be "creates"
+may not chose        % phrase "may not" is future tense; "chose" is past.
+measurment           % spelling
+multiaccess          % spelling multi-access (or better, multiple access)
+namespace            % spelling two words
+nimi                 % capitalize
+no\bvalley           % phrase hyphenate no-valley
+note that            % phrase is the rest of the paper less notable?
+of of                % phrase apparent double word.
+out-degree           % spelling outdegree for consistency
+pareto               % capitalize
+pathlogies           % spelling
+planetlab            % capitalize PlanetLab
+points links         % phrase probably wrong to have two plural nouns adjacent
+really               % spelling probably doesn't add
+rigorously           % spelling probably doesn't add, and I rarely do anything with rigor
+scriptroute          % capitalize
+secrurity            % spelling
+send-train           % capitalize should be Send-train 
+so that we may       % phrase probably "to"
+taht                 % spelling
+teh                  % spelling
+the affect           % phrase should probably be 'the effect'
+the the              % phrase apparent double word.
+the way in which     % phrase should be "how" or "" 
+there too few        % phrase there are too few?
+thrid                % spelling
+tier [123]           % phrase should be tier-1, tier-2, or tier-3.
+tier-[123]s          % phrase should be tier-1 ISPs
+ttl                  % capitalize
+usage                % phrase replace with "use"?
+v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
+value stems          % phrase value is derived or offered, I think.
+was not was          % phrase pretty much a joke if this gets matched.
+we we                % phrase it would be oi oi in french, I guess.
+we'll                % spelling we will
+we've                % spelling we have
+web                  % capitalize unless you're Charlotte, we capitalize Web.
+weibull              % capitalize proper name.
+with on              % phrase probably wrong.
+with with            % phrase apparent double word.
+time at which        % phrase very likely "when"
+place at which       % phrase very likely "where"
+at the time          % phrase very likely "when"
+reduced number of    % phrase very likely "fewer" or maybe maybe "less"
+is present in        % phrase present is probably redudant, try "is in"
+they all             % phrase maybe "all xs" would be better.
+easy to do           % phrase "feasible" or "practical" might be better.
+is going to          % phrase "will".
+are going to          % phrase "will".
+getting              % phrase probably "receiving" or "querying"
+those are            % phrase see if "those X are" is clearer?
+design is motivated  % phrase "inspired by" is probably better than "motivated" for design
+locations throughout the world % phrase drop "throughout the world"
+e.g., as opposed to  % phrase if you're giving examples, you're not talking about what isn't.  drop "e.g."
+in addition, we also % phrase remove either "also" or "in addition"
+other related issues % phrase probably remove "other"
+the aforementioned   % phrase "these xs" or "this x" would be less snooty
+center around        % phrase (cook) a center is a point: "center on" is okay.
+could care less      % phrase (cook) 'really? how much less could you care?' (should be couldn't)
+grouped together     % phrase redundant.  "grouped" alone should suffice.
+consistent with each other % phrase redundant.  "consistent" suffices.
+abstraction          % phrase this is often used poorly?
+be accomplished with % phrase try "requires" "uses" "needs"?
+the lack of knowledge of % phrase would "X is unknown" work better?
+gets to know % phrase you mean "learns"
+trying to look like % phrase you mean "acting", "emulating", or "mimicing"
+has got to be % phrase "must be"
+got % phrase try "became" "received" ?
+gotten % phrase try "helped" ?
+live in a vacuum % phrase a tired metaphor that makes me want to vomit.  
+positive impact % phrase try "benefit"
+negative impact % phrase try "harm"
+discuss the issues of % phrase could probably drop "the issues of" unless there's a list
+the presence of % phrase not far from 'is', 'has', etc.
+does not allow % phrase consider "forbids" or "prohibits"
+and/or % phrase just say or.
+there is the potential to % phrase just say may.
+there is the possibility that % phrase just say might.
+can be achieved % phrase maybe not so good?
+find out % phrase perhaps determine?
+in the absence of % phrase perhaps without?
+in the presence of % phrase perhaps with?
+set up % phrase perhaps configured?
+in the face of % phrase can be overused.  try despite?
+[ ]--[ ] % syntax that's an en-dash, you want an em-dash.
+\ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
+\ban [B-DF-GJ-NP-TV-Z] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
+\ba [aeiouAEIOU] % syntax probably meant to use "an" instead of "a", though there are exceptions.
+several times (at|of) % phrase discouraged by Kurt.
+a large degree of % phrase ick.
+my my % phrase unlikely that's what you want, at least without a comma. (doesn't work across newlines)
+we start by first % phrase redundant. ("first, we" or "we start by").
+in general, they are usually % phrase redundant.
+refers to the notion % phrase define your term precisely if possible.
+a significant amount of % phrase probably just "significant"
+real practical % phrase as opposed to imaginary practical?
+people that are % phrase use people who are?
+additional detail that we add % phrase as opposed to additional detail that we subtract?
+in some cases and not in others % phrase "in some cases"
+it is known that % phrase just say it.
+utilize % phrase "use"
+leverage % phrase "use"
+caused due to % phrase "caused by"
+a result of the fact that % phrase "caused by"
+a large set of % phrase probably don't care that it is a set.
+provides a look at % phrase (timid) probably mean "shows".
+Clearly, % syntax starting a sentence with clearly confuses me as a reader.
+in most cases % phrase "usually"
+PoP % syntax I think POP looks less annoying.
+PoPs % syntax I think POP looks less annoying.
+continue into the forseeable future % phrase "continue".
+fail to successfully % phrase "fail to" is sufficient.
+>From % syntax be careful when you email .tex files.  I've seen this slip through.
