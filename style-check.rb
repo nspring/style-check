@@ -117,7 +117,8 @@ if(Censored_phrases.length == 0) then
 end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
-De_command = Regexp.new('(~?\\\\(ref|href|url|cite|nocite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
+# though newcommand could gobble both parameters...
+De_command = Regexp.new('(~?\\\\(ref|href|url|input|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 
 def do_cns(line, file, linenum, phra_hash)
