@@ -2,18 +2,18 @@
 \{\\em [^\}]*[:\.,]\}        % syntax punctuation at the edges of italic text is not italicized
 [A-Z]{2,10}\.[ ]*[\n ][ ]*[A-Z]  % syntax intersentence spacing should be used if a sentence ends with an acronym: "FOO\\@."
 \\etal[^{]                   % syntax it's good practice to use \etal{} to avoid bad spacing
-\\caption\[[^\]]*[^\.]\] % syntax short caption should end with a period.
-\\caption\[.*CCDF.*\] % syntax short caption should not include graph type.
-\\caption\[.*CDF.*\] % syntax short caption should not include graph type.
-\\caption\[.{0,25}\] % syntax short caption should not be too short.
-[ ]---[ ] % syntax the em-dash should be right up against the words.
-[ \n]---[ \n] % syntax the em-dash should be right up against the words.
-^---[ \n] % syntax the em-dash should be right up against the words.
-[ \n]---$ % syntax the em-dash should be right up against the words.
-[ \n]--[ \n] % syntax the en-dash should be between numbers.
-^--[ \n] % syntax the en-dash should be between numbers.
-[ \n]--$ % syntax the en-dash should be rbetween numbers.
-,[~ ]\\etal % syntax no comma before etal (unless Smith, Martinez, \etal)
-\\etal\{\}'s % syntax eew.
+\\caption\[[^\]]*[^\.]\]     % syntax short caption should end with a period.
+\\caption\[.*CCDF.*\]        % syntax short caption should not include graph type.
+\\caption\[.*CDF.*\]         % syntax short caption should not include graph type.
+\\caption\[.{0,25}\]         % syntax short caption should not be too short.
+[ ]---[ ]                    % syntax the em-dash should be right up against the words.
+[ \n]---[ \n]                % syntax the em-dash should be right up against the words.
+^---[ \n]                    % syntax the em-dash should be right up against the words.
+[ \n]---$                    % syntax the em-dash should be right up against the words.
+[ \n]--[ \n]                 % syntax the en-dash should be between numbers.
+^--[ \n]                     % syntax the en-dash should be between numbers.
+[ \n]--$                     % syntax the en-dash should be rbetween numbers.
+,[~ ]\\etal                  % syntax no comma before etal (unless Smith, Martinez, \etal)
+\\etal\{\}'s                 % syntax eew.
 \\(sub)?section\{[A-Z][^}]*[ ][a-z]{5,40}[^}]*\} % syntax subsection headers should be initial capped.
 \\(sub)?section\{[A-Z][^}]*[^:][ ]{1,}(With|A|An|Is|And|For|To|The)[ ][^}]*\} % syntax some words needn't be capitalized

@@ -9,7 +9,7 @@ Figure Figure        % phrase pizza pizza.
 [^egs]\. [a-z]       % syntax a period usually ends a sentence, and sentences should start with a capital; doesn't apply for i.e., 
 \.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a capital; if "i.e.", use one space.
 [a-z]\.\.            % syntax double period is rarely right, use \ldots for ellipsis
-[^\\]"                   % syntax use fancy quotes
+[^\\]"               % syntax use fancy quotes
 \beg\.               % syntax should be e.g. as in "examples given"
 from to\b            % phrase haven't used this properly.
 help help            % phrase double word, that probably means the author paniced
@@ -25,26 +25,23 @@ with with            % phrase apparent double word.
 my my                % phrase unlikely that's what you want, at least without a comma. (doesn't work across newlines)
 >From                % syntax be careful when you email .tex files.  I've seen this slip through into submissions.
 e\.t\.c\.            % syntax it's et cetera; use etc.
-e\.g\.[ ]            % syntax should be followed with a comma, as e.g. can be read as "for example"
 such as like         % phrase pick one
 <<<<<<< .            % syntax CVS conflict!
 =======              % syntax CVS conflict!
 >>>>>>> [0-9]        % syntax CVS conflict!
 [;:]''               % syntax close quotes before (semi-)colons, but after commas and periods
-e\.g\.[\n ]            % syntax should be followed with a comma, as e.g. can be read as "for example" (thanks JZ!)
-i\.e\.[\n ]            % syntax should be followed with a comma, as i.e. can be read as "that is" (thanks JZ!)
-[ ]\.[\n ]             % syntax stray period?
+e\.g\.[\n ]          % syntax should be followed with a comma, as e.g. can be read as "for example" (thanks JZ!)
+i\.e\.[\n ]          % syntax should be followed with a comma, as i.e. can be read as "that is" (thanks JZ!)
+[ ]\.[\n ]           % syntax stray period?
 further more         % phrase one word: furthermore
 safe guard           % phrase one word: safeguard
-that be % phrase mistake.
-can not % phrase cannot
-only only % phrase double word
-is is % phrase double word.
-they shows % phrase argh, mistake.
-queueing           % spelling I'd love to spell it this way, but spellchecker whines.
-less that than % phrase typo damage
-from from % phrase double word score
-in in % phrase "in" (common mistake)
-not not % phrase argh.
-it it % phrase argh.
-vatnage            % spelling argh.
+that be              % phrase mistake.
+can not              % phrase cannot
+only only            % phrase double word
+is is                % phrase double word.
+they shows           % phrase argh, mistake.
+less that than       % phrase typo damage
+from from            % phrase double word score
+in in                % phrase "in" (common mistake)
+not not              % phrase argh.
+it it                % phrase argh.

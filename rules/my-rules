@@ -12,7 +12,7 @@
 \b$v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
 \ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
 \ban [B-DF-GJ-NP-TV-Z][^A-Z/] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
-\b[Aa] [aeiouAEIOU](?!se|ni|A|ur) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, useful, AA, unified, uniform, unique, Europe; n/a doesn't work, so use {n/a})
+\b[Aa] [aeiouAEIOU](?!se|ni|A|ur|ti) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, useful, AA, unified, uniform, unique, Europe; n/a doesn't work, so use {n/a})
 \\caption\{[^}]{60,}  % syntax such a long caption should have an abbreviated caption in square brackets
 This allows           % phrase tie more explicitly: This (x) allows...
 try and               % phrase "try to", though if you're using try as a noun in a compound sentence, this rule is wrong.
@@ -26,3 +26,5 @@ up until              % phrase "until"
 one or more           % phrase probably redundant -- nonzero is probably implied.
 is comprised of       % phrase you probably mean "is composed of" because "comprises" is more a synonym for "contains" 
 will be significantly different % phrase "will differ significantly" for active voice
+todo                  % ignoredcommand
+texttt                  % ignoredcommand

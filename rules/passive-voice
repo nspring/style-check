@@ -1,14 +1,15 @@
-it is possible to % phrase passive voice, try: "can"
-are identified by % phrase passive
-is shown % phrase passive.
-is not included in % phrase maybe this is passive
-there (are|is) [^\.:;]* (that|in) % phrase maybe this is passive
-can be evaluated % phrase avoid passive: I evaluated
-can be observed % phrase avoid passive: are visible
-# is needed   % phrase passive voice
-is used to               % phrase go active voice, or subsititute "helps"
-(are|were) needed[^\?]   % phrase passive voice
-(is|are) presented in % phrase "appears in", or reword to avoid passive voice
-it is possible that % phrase "may"
-(is|are) illustrated in % phrase thats passive voice
-(is|are) shown in % phrase "shows"
+it is possible to                   % phrase passive voice, try: "can"
+are identified by                   % phrase passive
+is shown                            % phrase passive.
+is not included in                  % phrase maybe this is passive
+there (are|is) [^\.:;]* (that|in)   % phrase maybe this is passive
+can be evaluated                    % phrase avoid passive: I evaluated
+can be observed                     % phrase avoid passive: are visible
+# is needed                         % phrase passive voice
+is used to                          % phrase go active voice, or subsititute "helps"
+(are|were) needed[^\?]              % phrase passive voice
+(is|are) presented in               % phrase "appears in", or reword to avoid passive voice
+it is possible that                 % phrase "may"
+(is|are) (depicted|illustrated) in  % phrase thats passive voice
+(is|are) shown in                   % phrase "shows"
+
