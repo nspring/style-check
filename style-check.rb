@@ -72,23 +72,28 @@ PathList.map { |rulefilename|
       #if ( ! phr.scan(~ /^# / ) then 
       expression, reason = phr.split(/\s*%\s*/) 
       if( reason ) then 
-        Censored_phrases[ 
-          case reason.split(/\s+/)[0]
-          when 'syntax'
-            Regexp.new(expression.chomp) 
-          when 'capitalize'
-            Regexp.new('\b' + expression.chomp + '\b' ) 
-          when 'phrase' 
-            Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
-          when 'spelling' 
-            Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
-          else
-            puts "warning: no class specified for %s at %s:%d" % [ expression, rulefilename, lnnum_minus_one + 1 ]
-            Regexp.new('\b' + expression.chomp + '\b' ) 
-          end
-        ] = ( reason or "" ) + "  (matched '" + expression.chomp + 
-                              "' in %s:%d)" % [ rulefilename, lnnum_minus_one + 1 ]
-        # end
+        begin
+          Censored_phrases[ 
+            case reason.split(/\s+/)[0]
+            when 'syntax'
+              Regexp.new(expression.chomp) 
+            when 'capitalize'
+              Regexp.new('\b' + expression.chomp + '\b' ) 
+            when 'phrase' 
+              Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
+            when 'spelling' 
+              Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
+            else
+              puts "warning: no class specified for %s at %s:%d" % [ expression, rulefilename, lnnum_minus_one + 1 ]
+              Regexp.new('\b' + expression.chomp + '\b' ) 
+            end
+          ] = ( reason or "" ) + "  (matched '" + expression.chomp + 
+            "' in %s:%d)" % [ rulefilename, lnnum_minus_one + 1 ]
+          # end
+        rescue RegexpError => e
+          $stderr.puts "#{rulefilename}:#{lnnum_minus_one + 1}: Error: #{e}"
+          exit 1
+        end
       end
     }
     else 
@@ -112,7 +117,7 @@ if(Censored_phrases.length == 0) then
 end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
-De_command = Regexp.new('(~?\\\\(ref|href|cite|nocite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
+De_command = Regexp.new('(~?\\\\(ref|href|url|cite|nocite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 
 def do_cns(line, file, linenum, phra_hash)
