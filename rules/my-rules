@@ -22,4 +22,5 @@ includes [^\.]*etc\. % syntax "includes" tells of a non-exclusive list, so "etc.
 AT&T                 % syntax you poor thing, this won't compile.
 doesn't              % phrase be formal.
 be occur % phrase what happens when I'm indecisive about what follows "can"
+up until % phrase "until"
 one or more % phrase probably redundant -- nonzero is probably implied.
