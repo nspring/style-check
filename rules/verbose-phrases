@@ -13,7 +13,7 @@ do this                             % phrase probably verbose if you use a prono
 exists[ ]                           % phrase probably no better than "is", but end of sentence may be unavoidable?
 if it is to                         % phrase should be "to" (usually followed by "be X")
 if they are to                      % phrase should be "to" (usually followed by "be X")
-in general                          % phrase unless matched with "in specific," this is usually useless
+in general                          % phrase unless matched with "in specific," this is usually useless; perhaps "overall"
 in order to                         % phrase remove "in order" and get "to"
 in the past                         % phrase past tense is likely enough.
 in the way of                       % phrase should be "as"
@@ -23,7 +23,7 @@ largely opaque                      % phrase largely does not modify opaque
 makes a new                         % phrase should be "creates"
 may not chose                       % phrase "may not" is future tense; "chose" is past.
 note that                           % phrase is the rest of the paper less notable?
-really                              % spelling probably doesn't add
+really                              % phrase probably doesn't add; if you think it does, use "r{}eally" -- don't change to 'in fact'
 rigorously                          % spelling probably doesn't add, and I rarely do anything with rigor
 the way in which                    % phrase should be "how" or "" 
 value stems                         % phrase value is derived or offered, I think.
@@ -96,3 +96,5 @@ in different continents             % phrase ON different continents, IN differe
 For the purposes of                 % phrase "For"
 We observe that                     % phrase drop.
 some degree of                      % phrase "some"
+in the problem of                   % phrase (contributed by rap)
+conclude several things    % phrase make several conclusions

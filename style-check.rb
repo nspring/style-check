@@ -104,7 +104,7 @@ PathList.map { |rulefilename|
 PreCensored_phrases[ 
   Regexp.new(/\.\\cite/) ] = "~\cite{} should precede the period."
 PreCensored_phrases[ 
-  Regexp.new(/\b(from|in|and)~\\cite/) ] = "don't cite in the sentence as from or in [x]."
+  Regexp.new(/\b(from|in|and|with)~\\cite/) ] = "don't cite in the sentence as from or in [x]."
 PreCensored_phrases[ 
   Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
 
@@ -118,7 +118,7 @@ end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
 # though newcommand could gobble both parameters...
-De_command = Regexp.new('(~?\\\\(ref|href|url|input|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
+De_command = Regexp.new('(~?\\\\(ref|href|url|input|todo|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$')
 
@@ -143,6 +143,7 @@ Input_files = ARGV
 Input_files.each { |f|
   in_multiline_comment = 0
   in_multiline_verbatim = false
+  in_multiline_equation = false
   # load the file, contents, but drop comments and other
   # hidden tex command pieces
   lines = File.open(f).readlines
@@ -161,10 +162,15 @@ Input_files.each { |f|
     elsif( ln =~ /\\end\{verbatim\}/ ) then
       in_multiline_verbatim=false
     end
-    if(in_multiline_comment == 0 && ! in_multiline_verbatim)  then
+    if( ln =~ /\\begin\{(equation|math|eqnarray)\*?\}/ ) then
+      in_multiline_equation=true
+    elsif( ln =~ /\\end\{(equation|math|eqnarray)\*?\}/ ) then
+      in_multiline_equation=false
+    end
+    if(in_multiline_comment == 0 && ! in_multiline_verbatim && ! in_multiline_equation)  then
       do_cns( ln, f, i+1, PreCensored_phrases )
       ln.gsub!(De_command, '~')
-      ln.gsub!(De_verb, '')
+      ln.gsub!(De_verb, '~')
       ln.gsub!(De_math, '~')
       do_cns( (ln + ( lines[i+1] or "" ) + ( lines[i+2] or "" )).sub(De_comment, '').sub(De_command, '~'), f, i+1, Censored_phrases )
       
