@@ -120,7 +120,7 @@ De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
 # though newcommand could gobble both parameters...
 De_command = Regexp.new('(~?\\\\(ref|href|url|input|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
-De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$|')
+De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$')
 
 def do_cns(line, file, linenum, phra_hash)
   # if line =~ /\\caption/ && file =~ /Mapping/ then
@@ -130,7 +130,7 @@ def do_cns(line, file, linenum, phra_hash)
   r = nil # so we can keep it as a side-effect of the detect call
   if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
     matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
-    puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m ]
+    puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
     if($VERBOSE && phra_hash[r]) then
       puts "  " + phra_hash[r]
       phra_hash[r] = nil # don't print the reason more than once
@@ -165,7 +165,7 @@ Input_files.each { |f|
       do_cns( ln, f, i+1, PreCensored_phrases )
       ln.gsub!(De_command, '~')
       ln.gsub!(De_verb, '')
-      ln.gsub!(De_math, '')
+      ln.gsub!(De_math, '~')
       do_cns( (ln + ( lines[i+1] or "" ) + ( lines[i+2] or "" )).sub(De_comment, '').sub(De_command, '~'), f, i+1, Censored_phrases )
       
       # now try to make sure that paragraphs end with sentence
