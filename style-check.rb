@@ -110,11 +110,13 @@ PathList.map { |rulefilename|
 PreCensored_phrases[ 
   Regexp.new(/\.\\cite/) ] = "~\cite{} should precede the period."
 PreCensored_phrases[ 
-  Regexp.new(/\b(from|in|and|with)~\\cite/) ] = "don't cite in the sentence as from or in [x]."
+  Regexp.new(/\b(from|in|and|with)[~ ]+\\cite/) ] = "don't cite in the sentence as 'in [x]', cites are not nouns."
 PreCensored_phrases[ 
   Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
 PreCensored_phrases[ 
-  Regexp.new(/\\url\{[^h][^t][^t][^p]/) ] = "~\url{} should be followed with http://."
+  Regexp.new(/(Table|Figure)[ \n]\\ref/) ] = "Table and Figure refs should have a non-breaking space"
+PreCensored_phrases[ 
+  Regexp.new(/\\url\{(?!http|ftp|rtsp|mailto)/) ] = "~\url{} should start with http:// (or ftp or rtsp or maybe mailto)."
 
 PctCensored_phrases[ 
   Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
