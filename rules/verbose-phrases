@@ -9,7 +9,7 @@ and instead                         % phrase replace with but?
 be done                             % phrase if "X of Y can be done", try "Y can be Xed"; it's already passive voice.
 combining multiple                  % phrase as opposed to "combining one?"
 do this                             % phrase probably verbose if you use a pronoun for what you're doing
-exists                              % phrase probably no better than "is"?
+exists[ ]                           % phrase probably no better than "is", but end of sentence may be unavoidable?
 if it is to                         % phrase should be "to" (usually followed by "be X")
 if they are to                      % phrase should be "to" (usually followed by "be X")
 in general                          % phrase unless matched with "in specific," this is usually useless
@@ -56,7 +56,7 @@ got                                 % phrase try "became" "received" ?
 gotten                              % phrase try "helped" ?
 live in a vacuum                    % phrase a tired metaphor that makes me want to vomit.  
 positive impact                     % phrase try "benefit"
-negative impact                     % phrase try "harm"
+negative impact                     % phrase try "harm" or "consequences"
 discuss the issues of               % phrase could probably drop "the issues of" unless there's a list
 the presence of                     % phrase not far from 'is', 'has', etc.
 does not allow                      % phrase consider "forbids" or "prohibits"

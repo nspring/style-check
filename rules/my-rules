@@ -2,17 +2,21 @@
 # capitalize is case sensitive, and also bracketed by non-word.
 # phrase and spelling are case insensitive, but bracketed by non-word characters.
 # syntax is case sensitive but not bracketed by non-word; probably best if used with regexes.
-et al\.[^}]          % syntax use the \etal{} command instead. (or write one to italicize)
-et\. al\.            % syntax use the \etal{} command, "et" needs no dot. (or write one to italicize)
-i\)[^$]              % syntax leave the paren in math mode -- should be $i)$
-ii\)[^$]             % syntax leave the paren in math mode -- should be $ii)$
-iii\)[^$]            % syntax leave the paren in math mode -- should be $iii)$
-iv\)[^$]             % syntax leave the paren in math mode -- should be $iv)$
-v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
+\bet al\.[^}]        % syntax use the \etal{} command instead. (or write one to italicize)
+\bet\. al\.          % syntax use the \etal{} command, "et" needs no dot (et alii). (or write one to italicize)
+\bc\.f\.\b             % syntax should be cf. for "confer" (latin for compare)
+\bi\)[^$]              % syntax leave the paren in math mode -- should be $i)$
+\bii\)[^$]             % syntax leave the paren in math mode -- should be $ii)$
+\biii\)[^$]            % syntax leave the paren in math mode -- should be $iii)$
+\biv\)[^$]             % syntax leave the paren in math mode -- should be $iv)$
+\bv\)[^$]              % syntax leave the paren in math mode -- should be $v)$
 \ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
 \ban [B-DF-GJ-NP-TV-Z][^A-Z] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
-\b[Aa] [aeiouAEIOU](?!ser|ni|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, AA, unified, uniform, unique; n/a doesn't work, so use {n/a})
+\b[Aa] [aeiouAEIOU](?!se|ni|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, useful, AA, unified, uniform, unique; n/a doesn't work, so use {n/a})
 \\caption\{[^}]{60,}  % syntax such a long caption should have an abbreviated caption in square brackets
+This allows           % phrase tie more explicitly: This (x) allows...
+try and               % phrase "try to", though if you're using try as a noun in a compound sentence, this rule is wrong.
 impact of % phrase not a useful metaphor; try evaluation, success, effect, value.
 including [^\.]*etc\. % syntax "including" tells of a non-exclusive list, so "etc." is redundant.  This rule will misfire if you have two lists in your sentence, but you shouldn't do that either. ;)
 includes [^\.]*etc\. % syntax "includes" tells of a non-exclusive list, so "etc." is redundant.  This rule will misfire if you have two lists in your sentence, but you shouldn't do that either. ;)
+AT&T                 % syntax you poor thing, this won't compile.
