@@ -1,4 +1,4 @@
 \{\\em [^\}]*[^\}\/]\}[:]    % syntax use \emph{} or explicit italic correction {\em foo\/}
 \{\\em [^\}]*[:\.,]\}        % syntax punctuation at the edges of italic text is not italicized
-[A-Z]{2,10}\.[\n ][ ]*[A-Z]  % syntax intersentence spacing should be used if a sentence ends with an acronym: "FOO\\@."
+[A-Z]{2,10}\.[ ]*[\n ][ ]*[A-Z]  % syntax intersentence spacing should be used if a sentence ends with an acronym: "FOO\\@."
 \\etal[^{]                   % syntax it's good practice to use \etal{} to avoid bad spacing
