@@ -123,7 +123,7 @@ De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$|')
 
 def do_cns(line, file, linenum, phra_hash)
-  # if line =~ /\\caption/ then
+  # if line =~ /\\caption/ && file =~ /Mapping/ then
     # puts "validating: '#{line}'"
   # end
   m = nil
@@ -158,7 +158,7 @@ Input_files.each { |f|
       ln.gsub!(De_command, '~')
       ln.gsub!(De_verb, '')
       ln.gsub!(De_math, '')
-      do_cns( (ln + ( lines[i+1] or "" )).sub(De_comment, '').sub(De_command, '~'), f, i+1, Censored_phrases )
+      do_cns( (ln + ( lines[i+1] or "" ) + ( lines[i+2] or "" )).sub(De_comment, '').sub(De_command, '~'), f, i+1, Censored_phrases )
       
       # now try to make sure that paragraphs end with sentence
       # ending punctuation, such as a period, exclamation mark,
