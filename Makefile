@@ -1,5 +1,5 @@
-RULESFILES=bad-words  common-typos  misspellings  my-rules  \
-	networking-research  verbose-phrases
+RULESFILES=bad-words barrass common-typos foolish-phrases latex-checking misspellings my-rules  \
+	networking-research passive-voice verbose-phrases 
 PACKAGE=style-check
 VERSION=0.6
 SYSCONFDIR=/etc/$(PACKAGE).d
@@ -37,9 +37,11 @@ distdir: README Makefile
 	done
 	cp Makefile COPYING style-check.rb README README.html test-*.tex $(distdir)
 
-dist: distdir
+$(distdir).tar.gz: distdir 
 	tar cvfz $(distdir).tar.gz $(distdir)
 	$(am__remove_distdir)
+
+dist: $(distdir).tar.gz
 
 README: README.html
 	cat $< | w3m -dump -T text/html > $@
@@ -47,5 +49,7 @@ README: README.html
 check:
 	./style-check.rb -r rules test-clean.tex
 
-upload:
-	scp README.html skyo.cs.washington.edu:www/software/style-check-readme.html
+upload: $(distdir).tar.gz
+	scp README.html ringding.cs.umd.edu:public_html/software/style-check-readme.html
+	scp $(distdir).tar.gz ringding.cs.umd.edu:public_html/software/
+	ssh ringding.cs.umd.edu "cd public_html/software && rm -f style-check-current.tar.gz && ln -s  $(distdir).tar.gz style-check-current.tar.gz"
