@@ -78,6 +78,8 @@ PreCensored_phrases[
   Regexp.new(/\.\\cite/) ] = "~\cite{} should precede the period."
 PreCensored_phrases[ 
   Regexp.new(/\b(from|in|and)~\\cite/) ] = "don't cite in the sentence as from or in [x]."
+PreCensored_phrases[ 
+  Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
 
 PctCensored_phrases[ 
   Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
@@ -88,7 +90,7 @@ if(Censored_phrases.length == 0) then
 end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
-De_command = Regexp.new('(~?\\\\(ref|cite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?{[^{]*})')
+De_command = Regexp.new('(~?\\\\(ref|href|cite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?{[^{]*})')
 
 def do_cns(line, file, linenum, phra_hash)
   m = nil
@@ -108,7 +110,8 @@ Input_files.each { |f|
   in_multiline_comment = 0
   # load the file, contents, but drop comments and other
   # hidden tex command pieces
-  lines = File.open(f).readlines.each_with_index { |ln,i|
+  lines = File.open(f).readlines
+  lines.each_with_index { |ln,i|
     do_cns( ln, f, i+1, PctCensored_phrases )
     ln.sub!(De_comment, '')
     if( ln =~ /\\begin{comment}/ ) then
@@ -120,6 +123,23 @@ Input_files.each { |f|
       do_cns( ln, f, i+1, PreCensored_phrases )
       ln.gsub!(De_command, '')
       do_cns( ln, f, i+1, Censored_phrases )
+      
+      # now try to make sure that paragraphs end with sentence
+      # ending punctuation, such as a period, exclamation mark,
+      # question mark, or perhaps a command-ending brace.
+      if(lines.length > i+3) then
+        checkstring = lines[i..(i+1)].map { |ln| 
+          ln.sub!(De_comment, '');   
+          ln.sub!(/\\[a-z]+=[0-9]+/, '');  # tex variable assignment; I format each on its own line.
+          ln }.join 
+        #if(checkstring =~ /SIGCOMM/) then
+          #puts "%s:%d: argh: %s" % [ f, i, checkstring.gsub(/\n/, '\n') ];
+        #end
+        if(checkstring =~ /[a-z0-9][^\.\!\?\n}]\n\n/) then
+          puts "%s:%d: apparent bad paragraph break: %s" % [ 
+            f, i+1, checkstring.gsub(/\n/, '\n') ];
+        end
+      end
     end
   }
 }
