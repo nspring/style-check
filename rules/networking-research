@@ -7,7 +7,6 @@ Send-Train           % capitalize should be Send-train
 UUNET                % capitalize UUnet
 [Rr]ate-limits       % spelling "rate limits" has no hyphen, only "rate-limited"
 [a-z] Tier           % syntax don't capitalize Tier unless at the beginning of the sentence
-\\etal[^{]           % syntax it's good practice to use \etal{} to avoid bad spacing
 ``no-valley''        % spelling should not be quoted, it's distracting
 best effort          % phrase hyphenate best-effort service.
 bpf                  % capitalize

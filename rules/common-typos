@@ -30,3 +30,7 @@ such as like         % phrase pick one
 <<<<<<< .            % syntax CVS conflict!
 =======              % syntax CVS conflict!
 >>>>>>> [0-9]        % syntax CVS conflict!
+[;:]''               % syntax close quotes before (semi-)colons, but after commas and periods
+e\.g\.[ ]            % syntax should be followed with a comma, as e.g. can be read as "for example" (thanks JZ!)
+i\.e\.[ ]            % syntax should be followed with a comma, as i.e. can be read as "that is" (thanks JZ!)
+[ ]\.[ ]             % syntax stray period?
