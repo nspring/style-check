@@ -101,3 +101,44 @@ conclude several things    % phrase make (draw) several conclusions
 extra bonus % phrase "bonus"
 added bonus % phrase "bonus"
 it is important to emphasize that % phrase use diction to emphasize.
+it is possible that % phrase "x may y"
+particulary difficult primarily % phrase simplify
+intuition about why % phrase "intuition as to why"
+Recall from above % phrase "recall"
+Further, (I|we) will also % phrase drop further or also
+respectively % phrase unneeded.
+in terms of % phrase don't need this.
+the extent to which % phrase "how much"
+make sure % phrase "ensure"
+make up % phrase "constitute" "compose"
+make a decision % phrase "decide"
+make a guess % phrase "guess"
+since that time % phrase "since then"
+choices to make % phrase "choices"
+certain limitations % phrase what does 'certain' add to limitations?
+will [a-z]* in the future % phrase "will"
+business entities % phrase "businesses"
+rely primarily on % phrase "primarily" weakens "rely".  perhaps just "use" would be simpler.
+has the potential to % phrase can
+have not yet developed % phrase "have yet to develop"
+to be effective, % phrase probably redundant.
+provide information about % phrase "tell how" "reveal" "expose" "disclose"
+are different, % phrase "differ"
+have already been % phrase "have been"? "were"?
+as appropriate % phrase not needed?
+only rarely % phrase "rarely" is probably enough.
+is effective at % phrase "can"
+foremost among them is % phrase "foremost is" would be shorter.
+those that have no % phrase those without
+that have no % phrase "without"?
+a variety of diverse % phrase redundant
+be highly valuable in % phrase simplify.
+the overall goal % phrase 'the goal'
+sometimes an? [a-z]+ will % phrase an x may
+this is perhaps because % phrase this may be because
+adding an additional % phrase redundant
+IP protocol % phrase redundant
+works well % phrase be more specific.
+something % phrase could eliminate.
+to keep from % phrase "to avoid"
+[\.,] since (!then) % phrase probably you mean "because" unless you're talking about time. -- "has since" is okay.

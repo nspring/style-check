@@ -34,3 +34,17 @@ such as like         % phrase pick one
 e\.g\.[\n ]            % syntax should be followed with a comma, as e.g. can be read as "for example" (thanks JZ!)
 i\.e\.[\n ]            % syntax should be followed with a comma, as i.e. can be read as "that is" (thanks JZ!)
 [ ]\.[\n ]             % syntax stray period?
+further more         % phrase one word: furthermore
+safe guard           % phrase one word: safeguard
+that be % phrase mistake.
+can not % phrase cannot
+only only % phrase double word
+is is % phrase double word.
+they shows % phrase argh, mistake.
+queueing           % spelling I'd love to spell it this way, but spellchecker whines.
+less that than % phrase typo damage
+from from % phrase double word score
+in in % phrase "in" (common mistake)
+not not % phrase argh.
+it it % phrase argh.
+vatnage            % spelling argh.
