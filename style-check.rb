@@ -80,7 +80,7 @@ PathList.map { |rulefilename|
             when 'capitalize'
               Regexp.new('\b' + expression.chomp + '\b' ) 
             when 'phrase' 
-              Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
+              Regexp.new('\b' + expression.chomp.gsub(' ', '\s+') + '\b', Regexp::IGNORECASE ) 
             when 'spelling' 
               Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
             else
