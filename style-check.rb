@@ -54,6 +54,7 @@ end
 
 $exit_status = 0
 
+ignoredCommands = "ref|href|url|input|todo|cite|nocite|cline|newcommand|includegraphics|begin|end|label".split('|')
 PctCensored_phrases = Hash.new  # before stripping comments
 PreCensored_phrases = Hash.new  # before stripping cites
 Censored_phrases = Hash.new     # the rest.
@@ -83,6 +84,9 @@ PathList.map { |rulefilename|
               Regexp.new('\b' + expression.chomp.gsub(/ /, '\s+') + '\b', Regexp::IGNORECASE ) 
             when 'spelling' 
               Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
+            when 'ignoredcommand'
+              ignoredCommands.push(expression.chomp)
+              nil
             else
               puts "warning: no class specified for %s at %s:%d" % [ expression, rulefilename, lnnum_minus_one + 1 ]
               Regexp.new('\b' + expression.chomp + '\b' ) 
@@ -94,6 +98,7 @@ PathList.map { |rulefilename|
           $stderr.puts "#{rulefilename}:#{lnnum_minus_one + 1}: Error: #{e}"
           exit 1
         end
+        Censored_phrases.delete(nil)
       end
     }
     else 
@@ -115,10 +120,9 @@ if(Censored_phrases.length == 0) then
   puts "no style-censor phrases found.  write some in ./style-censor."
   exit 1
 end
-
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
 # though newcommand could gobble both parameters...
-De_command = Regexp.new('(~?\\\\(ref|href|todo|done|wontfix|url|input|todo|cite|nocite|cline|newcommand|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
+De_command = Regexp.new('(~?\\\\(' + ignoredCommands.join('|') + ')(\[[^\]]*\])?\{[^{}]*\})')
 De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$')
 

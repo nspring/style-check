@@ -77,6 +77,18 @@
     complain.  I habitually misspell measurment, secrurity,
     and experiements.
 
+    <h2>Type -1: Ignored Commands</h2> Ignore the parameter
+    to this command.  If only spell checkers were this cool.
+    The standard ignored commands are \begin, \end, \url,
+    \cite, \ref, \label, and a few others.  You can extend
+    this in ./censor-dict with a personal dictionary that
+    might include, for example \todo or \hostname.  The
+    internal implementation of ignored commands is to
+    "replace" them with ~ (the non-breaking space character)
+    before the rest of the rules are checked, so it is
+    possible that other rules may need to take this into
+    account.
+
     <h2>Built-in checking</h2>
     <p>In addition to configurable rules, the style checker
     also seeks out common errors within the LaTeX source
@@ -166,6 +178,9 @@
 
     <p>Plain English Campaign<br>
     <a href="http://www.plainenglish.co.uk/">http://www.plainenglish.co.uk/</a>
+
+    <p>Thesis Errors<br>
+    <a href="http://core.ecu.edu/psyc/wuenschk/therr.htm">http://core.ecu.edu/psyc/wuenschk/therr.htm</a>
     
     <h2>Reading that takes work (and reference)</h2>
     <p>Rules for Writers, by Diana Hacker.
