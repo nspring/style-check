@@ -8,7 +8,7 @@
     <h1>Why does this code exist?</h1> This code is a weapon
     against collaborators who would dilute your writing with
     ambiguous or verbose prose.  It is designed to ensure that
-    collaborative papers appear in a consistenst style: mine.
+    collaborative papers appear in a consistent style: mine.
 
     <p>I think of all activities as coding.  My presentations
     use python scripts, not powerpoint.  My writing and
@@ -82,8 +82,20 @@
     <p>Comments using \begin{comment} and \end{comment} from 
     comment.sty are skipped.
 
+    <p>For more detail, read the ruby code.  It's shorter
+    than this file.
+
     <h1>How do I use it?</h1> 
 
+    From the style-check-(version) directory, run <br>
+    <tt>sudo make install</tt> <br>
+    to install as the superuser.  As an alternative, <br>
+    <tt>make user-install</tt><br>
+     will put the
+    ruleset in your home-directory, but putting the
+    style-check.rb script in your path is up to you.
+
+    <p>To run the script,<br>
     <tt>style-check.rb *.tex</tt>
 
     <p>Or, if you'd like to see the method behind the madness,<br> 
@@ -103,10 +115,24 @@
     <p>There are many bugs in the code; it is not guaranteed
     that the style checker will find all forbidden phrases.
 
+    <h1>Attitude</h1>
+
+    <p>Don't ask me to add a feature.  Send me a patch.
+
+    <p>Don't complain that it's written in Ruby.  My
+    language kicks your language's ass.
+
+    <p>Don't complain about the ruleset.  Invent a mechanism
+    to override ones you don't care for.
+
     <h1>Further Reading</h1> This section is split into two
     categories -- entertainment for reading that is light
     and fun and should help you think about writing better,
     and reference that may help answer harder questions.
+
+    An effective way to understand the frustration of bad
+    writing is to read a pretentious political science text
+    asking yourself, "could this be written more clearly?"
     
     <h2>Entertainment</h2>
     The Elements of Style, by Strunk and White<br>
@@ -117,7 +143,7 @@
     <p>Lake Superior State University Banished Words List<br>
     <a href="http://www.lssu.edu/banished/">http://www.lssu.edu/banished/</a>
     
-    <h2>Reference</h2>
+    <h2>Reading that takes work (and reference)</h2>
     <p>Rules for Writers, by Diana Hacker.
     <p>The New Oxford Guide to Writing, by Thomas S. Kane.
 

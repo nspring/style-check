@@ -1,4 +1,7 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+
+# copyright 2004 Neil Spring
+# distributed under the terms of the GNU General Public License.
 
 # a simple script to check against a ruleset of "forbidden"
 # phrases and spellings.  it is intended as a quick check
@@ -19,7 +22,9 @@
 # checker, a grammar checker, or a proof-reader.  And the 
 # phrases listed aren't necessarily forbidden; they may 
 # simply be discouraged.  Those that are particularly weak
-# should be annotated with "weak" leading the description.
+# should be annotated with a question mark at the end of the
+# explanation.  (the behavior of the script does not currently
+# depend on this syntax.  someday it may.)
 
 # Bugs 
 
@@ -34,18 +39,35 @@ if(ARGV[0] == "-v") then
   ARGV.shift
   $VERBOSE = true
 end
+override_rule_paths = nil
+if(ARGV[0] == "-r") then
+  ARGV.shift
+  param = File.expand_path(ARGV.shift)
+  if(test(?d, param)) then
+    override_rule_paths = Dir.glob(param + "/*")
+  elsif(test(?f, param)) then
+    override_rule_paths = param
+  else
+    raise "what is that rule path you tried to specify?"
+  end
+end
 
 $exit_status = 0
 
 PctCensored_phrases = Hash.new  # before stripping comments
 PreCensored_phrases = Hash.new  # before stripping cites
 Censored_phrases = Hash.new     # the rest.
+PathList = if(override_rule_paths) then 
+             override_rule_paths
+           else
+             Dir.glob("/etc/style-check.d/*") + 
+                 Dir.glob(ENV["HOME"] + "/.style-check.d/*") + 
+                     [ ENV["HOME"] + "/.style-censor", "./censor-dict", "/etc/style-censor", "./style-censor" ]
+           end
 
-( Dir.glob("/etc/style-check.d/*") + 
-   Dir.glob(ENV["HOME"] + "/.style-check.d/*") +
-   [ ENV["HOME"] + "/.style-censor", "./censor-dict", 
-     "/etc/style-censor", "./style-censor" ]).map { |rulefilename| 
-  if ( Kernel.test(?e, rulefilename) ) then
+PathList.map { |rulefilename| 
+  if ( Kernel.test(?f, rulefilename) && rulefilename !~ /~$/ ) then
+    # $stderr.print "loading #{rulefilename}"
     File.open(rulefilename).each_with_index { |phr,lnnum_minus_one|
       #if ( ! phr.scan(~ /^# / ) then 
       expression, reason = phr.split(/\s*%\s*/) 
@@ -91,6 +113,7 @@ end
 
 De_comment = Regexp.new('(([^\\\\]%.*)|(^%.*))$')
 De_command = Regexp.new('(~?\\\\(ref|href|cite|nocite|cline|includegraphics|begin|end|label)(\[[^\]]*\])?\{[^{}]*\})')
+De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 
 def do_cns(line, file, linenum, phra_hash)
   m = nil
@@ -122,6 +145,7 @@ Input_files.each { |f|
     if(in_multiline_comment == 0)  then
       do_cns( ln, f, i+1, PreCensored_phrases )
       ln.gsub!(De_command, '')
+      ln.gsub!(De_verb, '')
       do_cns( ln, f, i+1, Censored_phrases )
       
       # now try to make sure that paragraphs end with sentence
@@ -135,7 +159,7 @@ Input_files.each { |f|
         #if(checkstring =~ /SIGCOMM/) then
           #puts "%s:%d: argh: %s" % [ f, i, checkstring.gsub(/\n/, '\n') ];
         #end
-        if(checkstring =~ /[a-z0-9][^\.\!\?\n}]\n\n/) then
+        if(checkstring =~ /[a-z0-9][^\.\:\!\?\n}]\n\n/) then
           puts "%s:%d: apparent bad paragraph break: %s" % [ 
             f, i+1, checkstring.gsub(/\n/, '\n') ];
         end

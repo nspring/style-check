@@ -1,5 +1,7 @@
+RULESFILES=bad-words  common-typos  misspellings  my-rules  \
+	networking-research  verbose-phrases
 PACKAGE=style-check
-VERSION=0.1
+VERSION=0.2
 SYSCONFDIR=/etc/$(PACKAGE).d
 PREFIX=/usr/local
 bindir=$(PREFIX)/bin
@@ -15,8 +17,8 @@ user-install:
 
 install:
 	mkdir -p $(DESTDIR)$(SYSCONFDIR)
-	for p in rules/*; do \
-		$(INSTALL) -m0644 $$p $(DESTDIR)$(SYSCONFDIR); \
+	for p in $(RULESFILES); do \
+		$(INSTALL) -m0644 rules/$$p $(DESTDIR)$(SYSCONFDIR); \
 	done
 	mkdir -p $(DESTDIR)$(PREFIX)
 	$(INSTALL) -m0755 $$p $(DESTDIR)$(bindir);
@@ -26,12 +28,14 @@ am__remove_distdir = \
   { test ! -d $(distdir) \
     || { find $(distdir) -type d ! -perm -200 -exec chmod u+w {} ';' \
          && rm -fr $(distdir); }; }                                                            
-distdir: 
+distdir: README Makefile
 	$(am__remove_distdir)
 	mkdir $(distdir)
 	mkdir $(distdir)/rules
-	cp rules/* $(distdir)/rules
-	cp style-check.rb README test-*.tex $(distdir)
+	for f in $(RULESFILES); do \
+		cp rules/$$f $(distdir)/rules; \
+	done
+	cp Makefile COPYING style-check.rb README README.html test-*.tex $(distdir)
 
 dist: distdir
 	tar cvfz $(distdir).tar.gz $(distdir)
@@ -39,3 +43,6 @@ dist: distdir
 
 README: README.html
 	cat $< | w3m -dump -T text/html > $@
+
+check:
+	./style-check.rb -r rules test-clean.tex

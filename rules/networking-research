@@ -1,0 +1,40 @@
+EBONE                % capitalize a somewhat useless rule, now (we standardized on Ebone)
+EBone                % capitalize a somewhat useless rule, now (we standardized on Ebone)
+IPs                  % phrase should be IP addresses
+NMI                  % spelling is Steve's cat's name, not a measurement system
+Planetlab            % capitalize PlanetLab
+Send-Train           % capitalize should be Send-train 
+UUNET                % capitalize UUnet
+[Rr]ate-limits       % spelling "rate limits" has no hyphen, only "rate-limited"
+[a-z] Tier           % syntax don't capitalize Tier unless at the beginning of the sentence
+\\etal[^{]           % syntax it's good practice to use \etal{} to avoid bad spacing
+``no-valley''        % spelling should not be quoted, it's distracting
+best effort          % phrase hyphenate best-effort service.
+bpf                  % capitalize
+ccdf                 % capitalize
+cisco                % capitalize the company name
+city-pairs           % phrase decided to hyphenate
+deliver route        % phrase jargon redundancy
+interdomain          % spelling inter-domain
+internet             % capitalize unless talking about an internet other than the Internet
+intradomain          % spelling intra-domain
+load\bbalanc         % syntax load-balanced links, hyphenate load-balancing too
+log-normal           % spelling lognormal is one word.
+magic-packet         % spelling don't hyphenate
+multiaccess          % spelling multi-access (or better, multiple access)
+namespace            % spelling two words
+nimi                 % capitalize
+no\bvalley           % phrase hyphenate no-valley
+out-degree           % spelling outdegree for consistency
+pareto               % capitalize
+planetlab            % capitalize PlanetLab
+points links         % phrase probably wrong to have two plural nouns adjacent
+scriptroute          % capitalize
+send-train           % capitalize should be Send-train 
+tier [123]           % phrase should be tier-1, tier-2, or tier-3.
+tier-[123]s          % phrase should be tier-1 ISPs
+ttl                  % capitalize
+web                  % capitalize unless you're Charlotte, we capitalize Web.
+weibull              % capitalize proper name.
+PoP % syntax I think POP looks less annoying.
+PoPs % syntax I think POP looks less annoying.
