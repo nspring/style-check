@@ -71,8 +71,10 @@
     complain.  I habitually misspell measurment, secrurity,
     and experiements.
 
-    <p>The style checker also seeks out common errors within
-    the LaTeX source itself: <ul> 
+    <h2>Built-in checking</h2>
+    <p>In addition to configurable rules, the style checker
+    also seeks out common errors within the LaTeX source
+    itself: <ul>
 
       <li>an unescaped percent-sign directly following a
     number is frequently an error.</li>
@@ -103,7 +105,7 @@
     <p>To run the script,<br>
     <tt>style-check.rb *.tex</tt>
 
-    <p>Or, if you'd like to see the method behind the madness,<br> 
+    <p>Or, if you'd like a little justification with your scolding, <br> 
     <tt>style-check.rb -v *.tex</tt>
 
     <h1>Limitations</h1> This is not a proof-reader, editor,
@@ -158,6 +160,16 @@
     <p>Rules for Writers, by Diana Hacker.
     <p>The New Oxford Guide to Writing, by Thomas S. Kane.
     <p>Line by Line: How to Edit Your Own Writing, by Claire Cook.
+
+    <h2>Related Code</h2>
+    <p>Michael Haardt wrote GNU <a
+    href="http://www.gnu.org/software/diction/diction.html">diction</a>,
+    which is similar in that it finds and complains about
+    bad phrases, but different in that it also notes
+    questionable phrases (such as any use of "affect") and
+    does not expect to check LaTeX source.  Style-check
+    focuses on forbidden phrases and common typographic
+    errors in LaTeX code.
 
     <h1>Thanks</h1>
     <p>Kurt Partridge for encouraging me to release this thing. 
