@@ -6,8 +6,8 @@ Figure Figure        % phrase pizza pizza.
 [ ]-[ ]              % syntax a hyphen surrounded by space should probably be an emdash '--'
 [0-9]-[0-9]          % syntax use an emdash '--' for ranges
 [0-9]ms              % syntax put a space between the number and the unit.
-[^egs]\. [a-z]       % syntax a period usually ends a sentence, and sentences should start with a captial; doesn't apply for i.e., 
-\.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a captial; if "i.e.", use one space.
+[^egs]\. [a-z]       % syntax a period usually ends a sentence, and sentences should start with a capital; doesn't apply for i.e., 
+\.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a capital; if "i.e.", use one space.
 [a-z]\.\.            % syntax double period is rarely right, use \ldots for ellipsis
 \"                   % syntax use fancy quotes
 \beg\.               % syntax should be e.g. as in "examples given"
@@ -24,3 +24,4 @@ with with            % phrase apparent double word.
 [ ]--[ ]             % syntax that's an en-dash, you want an em-dash.
 my my                % phrase unlikely that's what you want, at least without a comma. (doesn't work across newlines)
 >From                % syntax be careful when you email .tex files.  I've seen this slip through into submissions.
+e\.t\.c\.            % syntax it's et cetera; use etc.
