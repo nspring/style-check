@@ -12,4 +12,4 @@ v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
 \ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
 \ban [B-DF-GJ-NP-TV-Z][^A-Z] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
 \b[Aa] [aeiouAEIOU](?!ser|nique|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, AA, n/a doesn't work)
-\\caption\{[^}]{40,}  % syntax such a long caption should have an abbreviated caption in square brackets
+\\caption\{[^}]{60,}  % syntax such a long caption should have an abbreviated caption in square brackets
