@@ -1,7 +1,7 @@
 RULESFILES=bad-words  common-typos  misspellings  my-rules  \
 	networking-research  verbose-phrases
 PACKAGE=style-check
-VERSION=0.2
+VERSION=0.3
 SYSCONFDIR=/etc/$(PACKAGE).d
 PREFIX=/usr/local
 bindir=$(PREFIX)/bin
