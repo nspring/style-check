@@ -21,7 +21,7 @@ was not was          % phrase pretty much a joke if this gets matched.
 we we                % phrase it would be oi oi in french, I guess.
 with on              % phrase probably wrong.
 with with            % phrase apparent double word.
-[ ]--[ ]             % syntax that's an en-dash, you want an em-dash.
+[\n ]--[\n ]         % syntax that's an en-dash, you want an em-dash: "---"
 my my                % phrase unlikely that's what you want, at least without a comma. (doesn't work across newlines)
 >From                % syntax be careful when you email .tex files.  I've seen this slip through into submissions.
 e\.t\.c\.            % syntax it's et cetera; use etc.
@@ -31,6 +31,6 @@ such as like         % phrase pick one
 =======              % syntax CVS conflict!
 >>>>>>> [0-9]        % syntax CVS conflict!
 [;:]''               % syntax close quotes before (semi-)colons, but after commas and periods
-e\.g\.[ ]            % syntax should be followed with a comma, as e.g. can be read as "for example" (thanks JZ!)
-i\.e\.[ ]            % syntax should be followed with a comma, as i.e. can be read as "that is" (thanks JZ!)
-[ ]\.[ ]             % syntax stray period?
+e\.g\.[\n ]            % syntax should be followed with a comma, as e.g. can be read as "for example" (thanks JZ!)
+i\.e\.[\n ]            % syntax should be followed with a comma, as i.e. can be read as "that is" (thanks JZ!)
+[ ]\.[\n ]             % syntax stray period?
