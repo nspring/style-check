@@ -83,6 +83,7 @@ in some cases and not in others     % phrase "in some cases"
 it is known that                    % phrase just say it.
 caused due to                       % phrase "caused by"
 a result of the fact that           % phrase "caused by"
+can be attributed to the fact that  % phrase "is because"
 a large set of                      % phrase probably don't care that it is a set.
 a small set of                      % phrase probably don't care that it is a set: use 'a few' 
 provides a look at                  % phrase (timid) probably mean "shows".
@@ -93,57 +94,70 @@ fail to successfully                % phrase "fail to" is sufficient.
 Clearly,                            % syntax starting a sentence with clearly confuses me.
 in different continents             % phrase ON different continents, IN different countries
 (we|to) handle                      % phrase use a more specific verb like address, treat, solve
+handling                            % phrase use a more specific verb like addressing, treating, solving, mitigating
 For the purposes of                 % phrase "For"
 We observe that                     % phrase drop.
 some degree of                      % phrase "some"
 in the problem of                   % phrase (contributed by rap)
-conclude several things    % phrase make (draw) several conclusions
-extra bonus % phrase "bonus"
-added bonus % phrase "bonus"
-it is important to emphasize that % phrase use diction to emphasize.
-it is possible that % phrase "x may y"
-particulary difficult primarily % phrase simplify
-intuition about why % phrase "intuition as to why"
-Recall from above % phrase "recall"
-Further, (I|we) will also % phrase drop further or also
-respectively % phrase unneeded.
-in terms of % phrase don't need this.
-the extent to which % phrase "how much"
-make sure % phrase "ensure"
-make up % phrase "constitute" "compose"
-make a decision % phrase "decide"
-make a guess % phrase "guess"
-since that time % phrase "since then"
-choices to make % phrase "choices"
-certain limitations % phrase what does 'certain' add to limitations?
-will [a-z]* in the future % phrase "will"
-business entities % phrase "businesses"
-rely primarily on % phrase "primarily" weakens "rely".  perhaps just "use" would be simpler.
-has the potential to % phrase can
-have not yet developed % phrase "have yet to develop"
-to be effective, % phrase probably redundant.
-provide information about % phrase "tell how" "reveal" "expose" "disclose"
-are different, % phrase "differ"
-have already been % phrase "have been"? "were"?
-as appropriate % phrase not needed?
-only rarely % phrase "rarely" is probably enough.
-is effective at % phrase "can"
-foremost among them is % phrase "foremost is" would be shorter.
-those that have no % phrase those without
-that have no % phrase "without"?
-a variety of diverse % phrase redundant
-be highly valuable in % phrase simplify.
-the overall goal % phrase 'the goal'
-sometimes an? [a-z]+ will % phrase an x may
-this is perhaps because % phrase this may be because
-adding an additional % phrase redundant
-IP protocol % phrase redundant
-works well % phrase be more specific.
-something % phrase could eliminate.
-to keep from % phrase "to avoid"
-[\.,] since (!then) % phrase probably you mean "because" unless you're talking about time. -- "has since" is okay.
-performance characteristics % phrase rare that characteristics adds.
-takes into account % phrase considers
-specify particular % phrase if specifying, particular should be redundant.
-prototype implementation % phrase "implementation" is redundant.
-given a particular % phrase "given a" is probably enough
+conclude several things             % phrase make (draw) several conclusions
+extra bonus                         % phrase "bonus"
+added bonus                         % phrase "bonus"
+it is important to emphasize that   % phrase use diction to emphasize.
+it is possible that                 % phrase "x may y"
+caused due to                       % phrase "caused by"
+recent work by                      % phrase could maybe be dropped, as the cite will include the date.
+identify the location of            % phrase "find"
+that go across                      % phrase "that cross"
+ideally, we would like              % phrase "we would like"
+enabling the ability to             % phrase "supporting" or "allowing" or "permitting"
+absolutely essential                % phrase essential is.
+we essentially do                   % phrase essentially is a poor adverb.  "The essence of our algorithm is a..."
+Essentially,                        % phrase maybe "In essence," but could also be removed.
+In this section (we|I)              % phrase "In this section, we", or "In this section, I"
+essentially all                     % phrase "most"
+past experience                     % phrase "experience" http://www.cmu.edu/styleguide/trickywords.html
+particulary difficult primarily     % phrase simplify
+intuition about why                 % phrase "intuition as to why"
+Recall from above                   % phrase "recall"
+Further, (I|we) will also           % phrase drop further or also
+respectively                        % phrase unneeded.
+in terms of                         % phrase don't need this.
+the extent to which                 % phrase "how much"
+make sure                           % phrase "ensure"
+make up                             % phrase "constitute" "compose"
+make a decision                     % phrase "decide"
+make a guess                        % phrase "guess"
+since that time                     % phrase "since then"
+choices to make                     % phrase "choices"
+certain limitations                 % phrase what does 'certain' add to limitations?
+will [a-z]* in the future           % phrase "will"
+business entities                   % phrase "businesses"
+rely primarily on                   % phrase "primarily" weakens "rely".  perhaps just "use" would be simpler.
+has the potential to                % phrase can
+have not yet developed              % phrase "have yet to develop"
+to be effective,                    % phrase probably redundant.
+provide information about           % phrase "tell how" "reveal" "expose" "disclose"
+are different,                      % phrase "differ"
+have already been                   % phrase "have been"? "were"?
+as appropriate                      % phrase not needed?
+only rarely                         % phrase "rarely" is probably enough.
+is effective at                     % phrase "can"
+foremost among them is              % phrase "foremost is" would be shorter.
+those that have no                  % phrase those without
+that have no                        % phrase "without"?
+a variety of diverse                % phrase redundant
+be highly valuable in               % phrase simplify.
+the overall goal                    % phrase 'the goal'
+sometimes an? [a-z]+ will           % phrase an x may
+this is perhaps because             % phrase this may be because
+adding an additional                % phrase redundant
+IP protocol                         % phrase redundant
+works well                          % phrase be more specific.
+something                           % phrase could eliminate.
+to keep from                        % phrase "to avoid"
+[\.,] since (!then)                 % phrase probably you mean "because" unless you're talking about time. -- "has since" is okay.
+performance characteristics         % phrase rare that characteristics adds.
+takes into account                  % phrase considers
+specify particular                  % phrase if specifying, particular should be redundant.
+prototype implementation            % phrase "implementation" is redundant.
+given a particular                  % phrase "given a" is probably enough
