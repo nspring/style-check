@@ -9,14 +9,14 @@
 # spellings, and inconsistent capitalization or hypenation.
 
 # complexity in this script arised from handling basic tex
-# comments, ignoring fragments of tex that are allowed to 
+# comments and ignoring fragments of tex that are allowed to 
 # violate style (such as the bibtex tag inside \cite{})
 
 # the dictionary of censored phrases is a compound of
 # ~/.style-censor, ./censor-dict (for historical reasons),
-# and /etc/style-censor for particularly egregious
-# violations (such as spelling errors and common double-word
-# problems).
+# and /etc/style-censor, as well as all files in
+# ~/.style-check.d, for particularly egregious violations
+# (such as spelling errors and common double-word problems).
 
 # this script is not intended to substitute for a spell
 # checker, a grammar checker, or a proof-reader.  And the 
@@ -39,6 +39,7 @@ if(ARGV[0] == "-v") then
   ARGV.shift
   $VERBOSE = true
 end
+
 override_rule_paths = nil
 if(ARGV[0] == "-r") then
   ARGV.shift
@@ -112,6 +113,8 @@ PreCensored_phrases[
   Regexp.new(/\b(from|in|and|with)~\\cite/) ] = "don't cite in the sentence as from or in [x]."
 PreCensored_phrases[ 
   Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
+PreCensored_phrases[ 
+  Regexp.new(/\\url\{[^h][^t][^t][^p]/) ] = "~\url{} should be followed with http://."
 
 PctCensored_phrases[ 
   Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
