@@ -5,11 +5,11 @@
 \bet al\.[^}]        % syntax use the \etal{} command instead. (or write one to italicize)
 \bet\. al\.          % syntax use the \etal{} command, "et" needs no dot (et alii). (or write one to italicize)
 \bc\.f\.\b             % syntax should be cf. for "confer" (latin for compare)
-\bi\)[^$]              % syntax leave the paren in math mode -- should be $i)$
-\bii\)[^$]             % syntax leave the paren in math mode -- should be $ii)$
-\biii\)[^$]            % syntax leave the paren in math mode -- should be $iii)$
-\biv\)[^$]             % syntax leave the paren in math mode -- should be $iv)$
-\bv\)[^$]              % syntax leave the paren in math mode -- should be $v)$
+\b$i\)[^$]              % syntax leave the paren in math mode -- should be $i)$
+\b$ii\)[^$]             % syntax leave the paren in math mode -- should be $ii)$
+\b$iii\)[^$]            % syntax leave the paren in math mode -- should be $iii)$
+\b$iv\)[^$]             % syntax leave the paren in math mode -- should be $iv)$
+\b$v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
 \ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
 \ban [B-DF-GJ-NP-TV-Z][^A-Z/] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
 \b[Aa] [aeiouAEIOU](?!se|ni|A|ur) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, useful, AA, unified, uniform, unique, Europe; n/a doesn't work, so use {n/a})
