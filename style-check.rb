@@ -156,6 +156,14 @@ def do_cns(line, file, linenum, phra_hash)
 end
  
 Input_files = ARGV
+Input_files.delete_if { |f|
+  if !test(?e, f) then
+    $stderr.puts "WARNING: Input file #{f} does not exist.  skipping."
+    true
+  else
+    false
+  end  
+}
 Input_files.each { |f|
   in_multiline_comment = 0
   in_multiline_verbatim = false
