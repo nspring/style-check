@@ -35,12 +35,16 @@ if(ARGV[0] == "-v") then
   $VERBOSE = true
 end
 
+$exit_status = 0
+
 PctCensored_phrases = Hash.new  # before stripping comments
 PreCensored_phrases = Hash.new  # before stripping cites
 Censored_phrases = Hash.new     # the rest.
 
-[ ENV["HOME"] + "/.style-censor", "./censor-dict", 
- "/etc/style-censor", "./style-censor" ].map { |rulefilename| 
+( Dir.glob("/etc/style-censor.d/*") + 
+   Dir.glob(ENV["HOME"] + "/.style-censor.d/*") +
+   [ ENV["HOME"] + "/.style-censor", "./censor-dict", 
+     "/etc/style-censor", "./style-censor" ]).map { |rulefilename| 
   if ( Kernel.test(?e, rulefilename) ) then
     File.open(rulefilename).each_with_index { |phr,lnnum_minus_one|
       #if ( ! phr.scan(~ /^# / ) then 
@@ -95,6 +99,7 @@ def do_cns(line, file, linenum, phra_hash)
       puts "  " + phra_hash[r]
       phra_hash[r] = nil # don't print the reason more than once
     end
+    $exit_status = 1 if(!phra_hash[r] =~ /\?\s*$/) 
   end
 end
  
