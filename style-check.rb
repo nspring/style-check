@@ -128,7 +128,8 @@ def do_cns(line, file, linenum, phra_hash)
   m = nil
   r = nil # so we can keep it as a side-effect of the detect call
   if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
-    puts "%s:%d: %s (%s)" % [ file, linenum, line.chomp, m ]
+    matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
+    puts "%s:%d: %s (%s)" % [ file, linenum, matchedlines, m ]
     if($VERBOSE && phra_hash[r]) then
       puts "  " + phra_hash[r]
       phra_hash[r] = nil # don't print the reason more than once
