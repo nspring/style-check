@@ -94,7 +94,7 @@ fail to successfully                % phrase "fail to" is sufficient.
 Clearly,                            % syntax starting a sentence with clearly confuses me.
 in different continents             % phrase ON different continents, IN different countries
 (we|to) handle                      % phrase use a more specific verb like address, treat, solve
-handling                            % phrase use a more specific verb like addressing, treating, solving, mitigating
+handling                            % phrase use a more specific verb like addressing, treating, solving, mitigating (unless handling errors or exceptions)
 For the purposes of                 % phrase "For"
 We observe that                     % phrase drop.
 some degree of                      % phrase "some"
@@ -161,3 +161,4 @@ takes into account                  % phrase considers
 specify particular                  % phrase if specifying, particular should be redundant.
 prototype implementation            % phrase "implementation" is redundant.
 given a particular                  % phrase "given a" is probably enough
+described in detail (in|below)      % phrase use "detailed"

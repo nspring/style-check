@@ -10,6 +10,6 @@ is used to                          % phrase go active voice, or subsititute "he
 (are|were) needed[^\?]              % phrase passive voice
 (is|are) presented in               % phrase "appears in", or reword to avoid passive voice
 it is possible that                 % phrase "may"
-(is|are) (depicted|illustrated) in  % phrase thats passive voice
+(is|are) (depicted|illustrated|sketched) in  % phrase thats passive voice
 (is|are) shown in                   % phrase "shows"
-
+there needs to be                   % phrase passive voice in a bad way.

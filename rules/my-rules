@@ -24,7 +24,7 @@ doesn't               % phrase be formal.
 be occur              % phrase what happens when I'm indecisive about what follows "can"
 up until              % phrase "until"
 one or more           % phrase probably redundant -- nonzero is probably implied.
-is comprised of       % phrase you probably mean "is composed of" because "comprises" is more a synonym for "contains" 
+is comprise(d|s) of   % phrase you probably mean "is composed of" because "comprises" is more a synonym for "contains" 
 will be significantly different % phrase "will differ significantly" for active voice
 More importantly,     % phrase probably means the order is wrong: put important stuff first.
 todo                  % ignoredcommand
