@@ -67,6 +67,8 @@ PathList = if(override_rule_paths) then
                      [ ENV["HOME"] + "/.style-censor", "./censor-dict", "/etc/style-censor", "./style-censor" ]
            end
 
+# $prefilter = nil
+
 PathList.map { |rulefilename| 
   if ( Kernel.test(?f, rulefilename) && rulefilename !~ /~$/ ) then
     # $stderr.print "loading #{rulefilename}"
@@ -82,7 +84,8 @@ PathList.map { |rulefilename|
             when 'capitalize'
               Regexp.new('\b' + expression.chomp + '\b' ) 
             when 'phrase' 
-              Regexp.new('\b' + expression.chomp.gsub(/ /, '\s+') + '\b', Regexp::IGNORECASE ) 
+              # $stderr.puts('\b' + expression.chomp.gsub(/ +/, '\s+').gsub(/([a-zA-Z])$/, '\1\b')) 
+              Regexp.new('\b' + expression.chomp.gsub(/ +/, '\s+').gsub(/([a-zA-Z\)])$/, '\1\b'), Regexp::IGNORECASE ) 
             when 'spelling' 
               Regexp.new('\b' + expression.chomp + '\b', Regexp::IGNORECASE ) 
             when 'ignoredcommand'
@@ -107,10 +110,12 @@ PathList.map { |rulefilename|
   end
 }
 
+# $prefilter = Regexp.new( "(" + Censored_phrases.keys.map { |r| r.source}.join("|") + ")" )
+
 PreCensored_phrases[ 
   Regexp.new(/\.\\cite/) ] = "~\cite{} should precede the period."
 PreCensored_phrases[ 
-  Regexp.new(/\b(from|in|and|with)[~ ]+\\cite/) ] = "don't cite in the sentence as 'in [x]', cites are not nouns."
+  Regexp.new(/\b(from|in|and|with|see)[~ ]+\\cite/) ] = "don't cite in the sentence as 'in [x]', cites are not nouns."
 PreCensored_phrases[ 
   Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
 PreCensored_phrases[ 
@@ -137,15 +142,17 @@ def do_cns(line, file, linenum, phra_hash)
   # end
   m = nil
   r = nil # so we can keep it as a side-effect of the detect call
-  if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
-    matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
-    puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
-    if($VERBOSE && phra_hash[r]) then
-      puts "  " + phra_hash[r]
-      phra_hash[r] = nil # don't print the reason more than once
+  # if m = $prefilter.match(line) then
+    if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
+      matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
+      puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
+      if($VERBOSE && phra_hash[r]) then
+        puts "  " + phra_hash[r]
+        phra_hash[r] = nil # don't print the reason more than once
+      end
+      $exit_status = 1 if(!phra_hash[r] =~ /\?\s*$/) 
     end
-    $exit_status = 1 if(!phra_hash[r] =~ /\?\s*$/) 
-  end
+  # end
 end
  
 Input_files = ARGV
