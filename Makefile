@@ -11,8 +11,8 @@ all:
 
 user-install:
 	mkdir -p $(HOME)/.style-check.d
-	for p in rules/*; do \
-		$(INSTALL) -m0644 $$p $(HOME)/.style-check.d; \
+	for p in $(RULESFILES); do \
+		$(INSTALL) -m0644 rules/$$p $(HOME)/.style-check.d; \
 	done
 
 install:
