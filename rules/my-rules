@@ -11,6 +11,8 @@ iv\)[^$]             % syntax leave the paren in math mode -- should be $iv)$
 v\)[^$]              % syntax leave the paren in math mode -- should be $v)$
 \ban [b-df-gj-np-tv-z] % syntax probably meant to use "a" instead of "an", though there are exceptions.
 \ban [B-DF-GJ-NP-TV-Z][^A-Z] % syntax probably meant to use "a" instead of "an", though there are exceptions (like acronyms).
-\b[Aa] [aeiouAEIOU](?!ser|nique|niform|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, AA, n/a doesn't work)
+\b[Aa] [aeiouAEIOU](?!ser|ni|A) % syntax probably meant to use "an" instead of "a", though there are exceptions. (user, AA, unified, uniform, unique; n/a doesn't work, so use {n/a})
 \\caption\{[^}]{60,}  % syntax such a long caption should have an abbreviated caption in square brackets
 impact of % phrase not a useful metaphor; try evaluation, success, effect, value.
+including [^\.]*etc\. % syntax "including" tells of a non-exclusive list, so "etc." is redundant.  This rule will misfire if you have two lists in your sentence, but you shouldn't do that either. ;)
+includes [^\.]*etc\. % syntax "includes" tells of a non-exclusive list, so "etc." is redundant.  This rule will misfire if you have two lists in your sentence, but you shouldn't do that either. ;)
