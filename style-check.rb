@@ -41,8 +41,8 @@ PctCensored_phrases = Hash.new  # before stripping comments
 PreCensored_phrases = Hash.new  # before stripping cites
 Censored_phrases = Hash.new     # the rest.
 
-( Dir.glob("/etc/style-censor.d/*") + 
-   Dir.glob(ENV["HOME"] + "/.style-censor.d/*") +
+( Dir.glob("/etc/style-check.d/*") + 
+   Dir.glob(ENV["HOME"] + "/.style-check.d/*") +
    [ ENV["HOME"] + "/.style-censor", "./censor-dict", 
      "/etc/style-censor", "./style-censor" ]).map { |rulefilename| 
   if ( Kernel.test(?e, rulefilename) ) then
