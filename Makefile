@@ -46,3 +46,6 @@ README: README.html
 
 check:
 	./style-check.rb -r rules test-clean.tex
+
+upload:
+	scp README.html skyo.cs.washington.edu:www/software/style-check-readme.html

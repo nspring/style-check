@@ -130,7 +130,7 @@ def do_cns(line, file, linenum, phra_hash)
   r = nil # so we can keep it as a side-effect of the detect call
   if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
     matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
-    puts "%s:%d: %s (%s)" % [ file, linenum, matchedlines, m ]
+    puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m ]
     if($VERBOSE && phra_hash[r]) then
       puts "  " + phra_hash[r]
       phra_hash[r] = nil # don't print the reason more than once
@@ -142,18 +142,26 @@ end
 Input_files = ARGV
 Input_files.each { |f|
   in_multiline_comment = 0
+  in_multiline_verbatim = false
   # load the file, contents, but drop comments and other
   # hidden tex command pieces
   lines = File.open(f).readlines
   lines.each_with_index { |ln,i|
     do_cns( ln, f, i+1, PctCensored_phrases )
     ln.sub!(De_comment, '')
+    # no, I don't know that comment environments nest and verbatim environments dont. 
+    # I have no such cluefulness.
     if( ln =~ /\\begin\{comment\}/ ) then
       in_multiline_comment+=1
     elsif( ln =~ /\\end\{comment\}/ ) then
       in_multiline_comment-=1
     end
-    if(in_multiline_comment == 0)  then
+    if( ln =~ /\\begin\{verbatim\}/ ) then
+      in_multiline_verbatim=true
+    elsif( ln =~ /\\end\{verbatim\}/ ) then
+      in_multiline_verbatim=false
+    end
+    if(in_multiline_comment == 0 && ! in_multiline_verbatim)  then
       do_cns( ln, f, i+1, PreCensored_phrases )
       ln.gsub!(De_command, '~')
       ln.gsub!(De_verb, '')

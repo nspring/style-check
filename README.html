@@ -5,27 +5,28 @@
   </head>
 
   <body>
-    <h1>Why does this code exist?</h1> This code is a weapon
-    against collaborators who would dilute your writing with
-    ambiguous or verbose prose.  It is designed to ensure that
-    collaborative papers appear in a consistent style: mine.
+    <h1>Why does this code exist?</h1> 
 
-    <p>I think of all activities as coding.  My presentations
-    use python scripts, not powerpoint.  My writing and
-    research posters use latex and emacs, not word or
-    publisher.  When I write code, I try to be creative and
-    sloppy, relying on tools to identify most of my
-    mistakes.  (For example gcc issues warnings, splint can
-    verify some memory processes, custom scripts can
-    identify simple portability problems, etc.)  When
+    <p>This code is a weapon against collaborators who would
+    dilute your writing with ambiguous or verbose prose.  It
+    was designed to ensure that collaborative papers appear
+    in a consistent style: mine.
+      
+    <p>I think of all activities as coding.  My
+    presentations use python scripts, not powerpoint.  My
+    writing and research posters use latex and emacs, not
+    word or publisher.  When I write code, I try to be
+    creative and sloppy, relying on tools to identify most
+    of my mistakes.  (For example, gcc issues warnings,
+    splint can verify some memory processes, and custom
+    scripts can identify simple portability problems.)  When
     writing text, I had no such tools.
 
-    <p>The style checker is one such tool.  When I make a
-    mistake in my work that can be identified by a regular
-    expression, or notice one in papers I read, I add a
-    forbidden expression to the style checker's ruleset.
-    Then, when I build my latex-formatted paper, I run the
-    style checker to seek out such phrases.
+    <p>The style checker is one such tool.  When I notice a
+    mistake that can be identified by a regular expression,
+    I add a forbidden expression to the style checker's
+    ruleset.  Then, when I build my latex-formatted paper, I
+    run the style checker to seek out such phrases.
 
     <p>It has saved me from submitting gramatically-sloppy
     last-minute edits.
@@ -56,10 +57,12 @@
     whole words are matched.
 
     <h2>Type 3: Phrase</h2> Phrases match longer phrases
-    such as "the foreseeable future". As with capitalize
-    expressions, they are transparently wrapped with "\b"s,
-    but are not case sensitive.  Some phrases that should
-    be forbidden include double words.
+    such as "the foreseeable future" or <a
+    href="http://www.plainenglish.co.uk/pressrelease.html">"at
+    the end of the day"</a>. As with capitalize expressions,
+    they are transparently wrapped with "\b"s, but are not
+    case sensitive.  Some phrases that should be forbidden
+    include double words.
 
     <h2>Type 4: Spelling</h2> Spelling expressions are
     internally handled just like phrases.  These are useful
@@ -73,7 +76,7 @@
 
       <li>an unescaped percent-sign directly following a
     number is frequently an error.</li>
-      <li>a \cite{} tag should precede a period.</li>
+      <li>a \cite{} tag should precede (not follow) a period.</li>
       <li>a \cite{} tag should not be used obviously as a noun in 
         the middle of a sentence.</li>
       <li>paragraphs should end with the end of a sentence.</li>
@@ -81,6 +84,8 @@
 
     <p>Comments using \begin{comment} and \end{comment} from 
     comment.sty are skipped.
+
+    <p>Math mode between unescaped $'s is skipped. 
 
     <p>For more detail, read the ruby code.  It's shorter
     than this file.
@@ -143,6 +148,9 @@
     <p>Lake Superior State University Banished Words List<br>
     <a href="http://www.lssu.edu/banished/">http://www.lssu.edu/banished/</a>
 
+    <p>Usage in The American Heritage Dictionary<br>
+    <a href="http://www.bartleby.com/61/7.html">http://www.bartleby.com/61/7.html</a>
+
     <p>Plain English Campaign<br>
     <a href="http://www.plainenglish.co.uk/">http://www.plainenglish.co.uk/</a>
     
@@ -151,14 +159,16 @@
     <p>The New Oxford Guide to Writing, by Thomas S. Kane.
     <p>Line by Line: How to Edit Your Own Writing, by Claire Cook.
 
-    <h2>Thanks</h2>
+    <h1>Thanks</h1>
     <p>Kurt Partridge for encouraging me to release this thing. 
+    <p>Vibha Sazawal for reminding me often that there is more to writing than style. 
+    <p>Rich Wolski for introducing me to Strunk and White, the gateway drug.
     
     <hr>
     <address><a href="mailto:nspring@cs.washington.edu">Neil Spring</a></address>
 <!-- Created: Wed May 12 13:50:54 PDT 2004 -->
 <!-- hhmts start -->
-Last modified: Sun May 16 11:53:10 PDT 2004
+Last modified: Mon Jun 14 16:50:50 PDT 2004
 <!-- hhmts end -->
   </body>
 </html>
