@@ -7,7 +7,7 @@ Figure Figure        % phrase pizza pizza.
 [0-9]-[0-9]          % syntax use an emdash '--' for ranges
 [0-9]ms              % syntax put a space between the number and the unit.
 [^egs]\. [a-z]       % syntax a period usually ends a sentence, and sentences should start with a capital; doesn't apply for i.e., 
-\.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a capital; if "i.e.", use one space.
+\.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a capital; "i.e." should have a comma following.
 [a-z]\.\.            % syntax double period is rarely right, use \ldots for ellipsis
 [^\\]"               % syntax use fancy quotes
 \beg\.               % syntax should be e.g. as in "examples given"
