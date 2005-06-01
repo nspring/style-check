@@ -17,3 +17,4 @@
 \\etal\{\}'s                 % syntax eew.
 \\(sub)?section\{[A-Z][^}]*[ ][a-z]{5,40}[^}]*\} % syntax subsection headers should be initial capped.
 \\(sub)?section\{[A-Z][^}]*[^:][ ]{1,}(With|A|An|Is|And|For|To|The)[ ][^}]*\} % syntax some words needn't be capitalized
+[ ]\\footnote                % syntax no space before footnote.  
