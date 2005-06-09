@@ -162,14 +162,18 @@ specify particular                  % phrase if specifying, particular should be
 prototype implementation            % phrase "implementation" is redundant.
 given a particular                  % phrase "given a" is probably enough
 described in detail (in|below)      % phrase use "detailed"
+relatively more                     % phrase more is already relative.
 focus primarily on                  % phrase bad metaphor: subject of focus is singular.
 primary focus                       % phrase bad metaphor: subject of focus is singular.
-relatively more % phrase more is already relative.
-gives [a-z]+ information about % phrase use "tells" x
+relatively more                     % phrase more is already relative.
 gives [a-z]+ [a-z]+ information about % phrase use "tells" x
-an important question to ask is % phrase just ask it.
-an interesting thing % phrase avoid saying something is interesting.  if you have to say it, it isn't.
-checks to see if % phrase "checks" or "determines"
-we can see       % phrase "we can see" isn't formal enough.
-still remain % phrase "remain".
+an important question to ask is     % phrase just ask it.
+an interesting thing                % phrase avoid saying something is interesting.  if you have to say it, it isn't.
+checks to see if                    % phrase "checks" or "determines"
+have an effect on                   % phrase "affect"
+an important question to ask is     % phrase just ask it.
+an interesting thing                % phrase avoid saying something is interesting.  if you have to say it, it isn't.
+checks to see if                    % phrase "checks" or "determines"
+we can see                          % phrase "we can see" isn't formal enough.
+still remain                        % phrase "remain".
 change over time                    % phrase "change"
