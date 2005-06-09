@@ -1,7 +1,7 @@
 RULESFILES=bad-words barrass common-typos foolish-phrases latex-checking misspellings my-rules  \
 	networking-research passive-voice verbose-phrases 
 PACKAGE=style-check
-VERSION=0.6
+VERSION=0.8
 SYSCONFDIR=/etc/$(PACKAGE).d
 PREFIX=/usr/local
 bindir=$(PREFIX)/bin
@@ -20,8 +20,8 @@ install:
 	for p in $(RULESFILES); do \
 		$(INSTALL) -m0644 rules/$$p $(DESTDIR)$(SYSCONFDIR); \
 	done
-	mkdir -p $(DESTDIR)$(PREFIX)
-	$(INSTALL) -m0755 $$p $(DESTDIR)$(bindir);
+	mkdir -p $(DESTDIR)$(bindir)
+	$(INSTALL) -m0755 style-check.rb $(DESTDIR)$(bindir);
 
 distdir = $(PACKAGE)-$(VERSION)
 am__remove_distdir = \
