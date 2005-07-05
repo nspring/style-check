@@ -14,5 +14,6 @@ it is possible that                 % phrase "may"
 (is|are) shown in                   % phrase "shows"
 as can be seen in                   % phrase X shows that Y.
 there needs to be                   % phrase passive voice in a bad way.
-was designed % phrase passive voce.
-it may be % phrase passive "it"
+was designed                        % phrase passive voce.
+it may be                           % phrase passive "it"
+it is important that                % phrase passive; replace with X is important because Y.

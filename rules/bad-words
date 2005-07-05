@@ -7,7 +7,7 @@ don't                % spelling do not
 behavioral           % spelling I'm convinced we don't use this word properly.
 we'll                % spelling we will
 we've                % spelling we have
-impact               % phrase "consequences", "effect", "result"
+[^r][^c][^h] impact  % phrase "consequences", "effect", "result", though nsf likes "research impact"
 tackle               % phrase "tackle" (a problem) is wimpy for "solve" or a tired metaphor for "address a challenge".
 thusly               % phrase "thus" or "this way" or "like this" http://www.bartleby.com/64/C003/0282.html
 transpire            % phrase "happen" 
