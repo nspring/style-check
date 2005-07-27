@@ -43,3 +43,4 @@ outdegree            % phrase going to use hyphenated form.
 network measurement algorithms % phrase you're too kind to network measurement.  I haven't seen an algorithm yet.
 http[ ]              % capitalize capitalize HTTP.
 linux                % capitalize capitalize Linux
+Internet[^\.]*Internet % syntax avoid Internet twice in the same sentence?
