@@ -22,7 +22,9 @@ is permitted to                     % phrase "may"
 largely opaque                      % phrase largely does not modify opaque
 makes a new                         % phrase should be "creates"
 may not chose                       % phrase "may not" is future tense; "chose" is past.
+one should note                     % phrase just write it.
 note that                           % phrase is the rest of the paper less notable?
+note however that                   % phrase is the rest of the paper less notable?
 really                              % phrase probably doesn't add; if you think it does, use "r{}eally" -- don't change to 'in fact'
 rigorously                          % spelling probably doesn't add, and I rarely do anything with rigor
 the way in which                    % phrase should be "how" or "" 
@@ -180,3 +182,7 @@ change over time                    % phrase "change"
 turn into                           % phrase "become"
 planning in advance                 % phrase when else might you plan?
 a lot of                            % phrase "many"
+keep in mind                        % phrase "consider" (or drop)
+it is clear that                    % phrase if clear, you don't have to say it.
+especially true                     % phrase true is an absolute, can't be especially true.
+making it increasingly difficult    % phrase preventing, discouraging, impeding, blocking, slowing...
