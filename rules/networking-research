@@ -44,3 +44,4 @@ network measurement algorithms % phrase you're too kind to network measurement. 
 http[ ]              % capitalize capitalize HTTP.
 linux                % capitalize capitalize Linux
 Internet[^\.]*Internet % syntax avoid Internet twice in the same sentence?
+zipf                 % capitalize capitalize the guy's name.

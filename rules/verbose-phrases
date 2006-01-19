@@ -187,3 +187,5 @@ keep in mind                        % phrase "consider" (or drop)
 it is clear that                    % phrase if clear, you don't have to say it.
 especially true                     % phrase true is an absolute, can't be especially true.
 making it increasingly difficult    % phrase preventing, discouraging, impeding, blocking, slowing...
+is potentially                      % phrase "may be"
+have been [a-z]* in the past        % phrase 'in the past' is redundant with tense.
