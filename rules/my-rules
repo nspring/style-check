@@ -28,3 +28,4 @@ will be significantly different % phrase "will differ significantly" for active 
 More importantly,     % phrase probably means the order is wrong: put important stuff first.
 todo                  % ignoredcommand
 texttt                  % ignoredcommand
+the above             % phrase horrible phrase that must be expunged.  you might use "these" instead, but best to make the sentence stand alone.
