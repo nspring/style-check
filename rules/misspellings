@@ -22,9 +22,11 @@ infomation           % spelling
 queueing             % spelling I'd love to spell it this way, but spellchecker whines.
 vatnage              % spelling argh.
 hte                  % spelling
-acknowledgement      % spelling acknowledgment 
-acknowlegement       % spelling
-acknowlegment        % spelling
-acknowledgements     % spelling acknowledgment 
-acknowlegements      % spelling
-acknowlegments       % spelling
+acknowledgement      % spelling acknowledgment, though what you have is technically legal, despite ispell.
+acknowlegement       % spelling needs a d.
+acknowlegment        % spelling needs a d.
+acknowledgements     % spelling acknowledgment , though what you have is technically legal, despite ispell.
+acknowlegements      % spelling needs a d.
+acknowlegments       % spelling needs a d.
+targetted            % spelling "targeted"
+desireable           % spelling "desirable"

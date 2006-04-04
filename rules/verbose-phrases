@@ -9,6 +9,7 @@ actually                            % spelling probably doesn't add
 and instead                         % phrase replace with but?
 be done                             % phrase if "X of Y can be done", try "Y can be Xed"; it's already passive voice.
 combining multiple                  % phrase as opposed to "combining one?"
+aggregating multiple                % phrase "aggregating"
 do this                             % phrase probably verbose if you use a pronoun for what you're doing
 exists[ ]                           % phrase probably no better than "is", but end of sentence may be unavoidable?
 if it is to                         % phrase should be "to" (usually followed by "be X")
@@ -24,6 +25,7 @@ makes a new                         % phrase should be "creates"
 may not chose                       % phrase "may not" is future tense; "chose" is past.
 one should note                     % phrase just write it.
 note that                           % phrase is the rest of the paper less notable?
+we note                             % phrase is the rest of the paper less notable?
 note however that                   % phrase is the rest of the paper less notable?
 really                              % phrase probably doesn't add; if you think it does, use "r{}eally" -- don't change to 'in fact'
 rigorously                          % spelling probably doesn't add, and I rarely do anything with rigor
@@ -181,6 +183,13 @@ we can see                          % phrase "we can see" isn't formal enough.
 still remain                        % phrase "remain".
 change over time                    % phrase "change"
 turn into                           % phrase "become"
+looking back in retrospect          % phrase pick.
+ensures that there will be no       % phrase "prevents"
+does have                           % phrase "has"
+first step toward this              % phrase "toward this" can probably be dropped.
+can potentially be                  % phrase "might be", or just "can be"
+obviates the need for               % phrase just obviates x, not obviates the need for x.
+it is indeed                        % phrase "it is", though still passive.
 planning in advance                 % phrase when else might you plan?
 a lot of                            % phrase "many"
 keep in mind                        % phrase "consider" (or drop)

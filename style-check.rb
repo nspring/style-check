@@ -125,6 +125,8 @@ PreCensored_phrases[
 
 PctCensored_phrases[ 
   Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
+PctCensored_phrases[ 
+  Regexp.new(/[<>]/) ] = "a less than or greater than outside math mode shows other characters."
 
 if(Censored_phrases.length == 0) then
   puts "no style-censor phrases found.  write some in ./style-censor."
@@ -143,7 +145,7 @@ def do_cns(line, file, linenum, phra_hash)
   m = nil
   r = nil # so we can keep it as a side-effect of the detect call
   # if m = $prefilter.match(line) then
-    if(phra_hash.keys.detect { |r| m = r.match(line) and m.begin(0) < line.index("\n") } ) then
+    if(phra_hash.keys.detect { |r| m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n")) } ) then
       matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
       puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
       if($VERBOSE && phra_hash[r]) then

@@ -46,5 +46,7 @@ in in                % phrase "in" (common mistake)
 not not              % phrase argh.
 it it                % phrase argh.
 to illicit           % phrase "to elicit" -- illicit is always an adjective.
+c.f.                 % phrase actually, it's cf., and you'd like cf.\ (backslash space)
+this lead to         % phrase "led to" if past tense, "leads to" if present.
 on on                % phrase double word.
 has is               % phrase choose
