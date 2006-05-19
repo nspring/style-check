@@ -21,4 +21,5 @@
 ,,                           % syntax double comma is unlikely to be intentional.
 cf.[^\\]                     % phrase cf. should get an escaped space "\ "
 [a-z]''[\.]                     % syntax close quotes outside the period. (doesn't seem to work.)
+[<>]  % syntax a less than or greater than outside math mode shows other characters.
 

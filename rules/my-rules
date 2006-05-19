@@ -31,3 +31,9 @@ texttt                  % ignoredcommand
 due to space constraints % phrase don't whine.
 this paper % phrase can be ambiguous if talking about someone else's paper whether you mean the one youre writing or the one you're talking about..
 the above             % phrase horrible phrase that must be expunged.  you might use "these" instead, but best to make the sentence stand alone.
+referred to above     % phrase "these".
+(all|the|of) [0-9][ ] %  phrase use words for numbers in phrases.
+clearly shows         % phrase "clearly" is usually much.
+grows larger          % phrase is "grows smaller" possible?  grows.
+guarantee as much as possible % phrase then not really a guarantee "provide"
+affects negatively   % phrase "hurts" or "harms"

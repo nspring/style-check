@@ -14,6 +14,7 @@ ccdf                 % capitalize
 cisco                % capitalize the company name
 city-pairs           % phrase decided to hyphenate
 deliver route        % phrase jargon redundancy
+euclidean % capitalize Euclidean.
 interdomain          % spelling inter-domain
 internet             % capitalize unless talking about an internet other than the Internet
 intradomain          % spelling intra-domain
