@@ -50,3 +50,4 @@ c.f.                 % phrase actually, it's cf., and you'd like cf.\ (backslash
 this lead to         % phrase "led to" if past tense, "leads to" if present.
 on on                % phrase double word.
 has is               % phrase choose
+description their    % phrase saw this, clearly wrong.
