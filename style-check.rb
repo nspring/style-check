@@ -125,8 +125,8 @@ PreCensored_phrases[
 
 PctCensored_phrases[ 
   Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
-PctCensored_phrases[ 
-  Regexp.new(/[<>]/) ] = "a less than or greater than outside math mode shows other characters."
+# PctCensored_phrases[ 
+#   Regexp.new(/[<>]/) ] = "a less than or greater than outside math mode shows other characters."
 
 if(Censored_phrases.length == 0) then
   puts "no style-censor phrases found.  write some in ./style-censor."

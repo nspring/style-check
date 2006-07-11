@@ -46,3 +46,4 @@ http[ ]              % capitalize capitalize HTTP.
 linux                % capitalize capitalize Linux
 Internet[^\.]*Internet % syntax avoid Internet twice in the same sentence?
 zipf                 % capitalize capitalize the guy's name.
+in network distance % phrase what is that?

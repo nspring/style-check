@@ -175,6 +175,7 @@ focus primarily on                  % phrase bad metaphor: subject of focus is s
 primary focus                       % phrase bad metaphor: subject of focus is singular.
 relatively more                     % phrase more is already relative.
 gives [a-z]+ [a-z]+ information about % phrase use "tells" x
+gives [a-z]+ information about      % phrase use "tells" x
 an important question to ask is     % phrase just ask it.
 an interesting thing                % phrase avoid saying something is interesting.  if you have to say it, it isn't.
 checks to see if                    % phrase "checks" or "determines"
@@ -205,3 +206,4 @@ amount of time  % phrase "duration"
 should ideally % phrase "should"
 are of great benefit to % phrase "help" or "aid"
 are of benefit to % phrase "help" or "aid" or "promote"
+speed slow % phrase speed is probably redundant.

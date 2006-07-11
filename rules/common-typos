@@ -51,3 +51,5 @@ this lead to         % phrase "led to" if past tense, "leads to" if present.
 on on                % phrase double word.
 has is               % phrase choose
 description their    % phrase saw this, clearly wrong.
+including:  % syntax I prefer no colon after including, which already says a list is coming.
+[a-z]\([A-Z]  % syntax put a space before parens, even when introducing acronyms.
