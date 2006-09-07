@@ -33,7 +33,6 @@ send-train           % capitalize should be Send-train
 tier [123]           % phrase should be tier-1, tier-2, or tier-3.
 tier-[123]s          % phrase should be tier-1 ISPs
 ttl                  % capitalize
-web                  % capitalize unless you're Charlotte, we capitalize Web.
 weibull              % capitalize proper name.
 PoP                  % syntax I think POP looks less annoying.
 PoPs                 % syntax I think POP looks less annoying.
