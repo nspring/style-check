@@ -22,5 +22,6 @@
 cf.[^\\]                     % phrase cf. should get an escaped space "\ "
 [a-z]''[\.]                     % syntax close quotes outside the period. (doesn't seem to work.)
 [<>]  % syntax a less than or greater than outside math mode shows other characters.
-
+in section \\ref % phrase should have ~ between section and ref
+section~\\ref % capitalize capitalize section when saying Section 6.
 \\(sub)?section\{Intro\} % syntax spell it out.

@@ -46,3 +46,5 @@ linux                % capitalize capitalize Linux
 Internet[^\.]*Internet % syntax avoid Internet twice in the same sentence?
 zipf                 % capitalize capitalize the guy's name.
 in network distance % phrase what is that?
+TIMEWAIT % spelling it's "TIME-WAIT", hyphenated in rfc 793
+FINWAIT % syntax it's "FIN-WAIT-1" or "FIN-WAIT-2", hyphenated in rfc 793

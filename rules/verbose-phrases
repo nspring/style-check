@@ -206,4 +206,12 @@ amount of time  % phrase "duration"
 should ideally % phrase "should"
 are of great benefit to % phrase "help" or "aid"
 are of benefit to % phrase "help" or "aid" or "promote"
+important here % phrase consider "relevant"
+while at the same time % phrase "while" is enough.
+are able to % phrase can
+subvert the proper operation of % phrase subvert
 speed slow % phrase speed is probably redundant.
+of size no smaller than % phrase "of size" is probably redundant
+of size no larger than % phrase "of size" is probably redundant
+of size smaller than % phrase "of size" is probably redundant
+of size larger than % phrase "of size" is probably redundant
