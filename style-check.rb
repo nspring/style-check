@@ -119,7 +119,9 @@ PreCensored_phrases[
 PreCensored_phrases[ 
   Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
 PreCensored_phrases[ 
-  Regexp.new(/(Table|Figure)[ \n]\\ref/) ] = "Table and Figure refs should have a non-breaking space"
+  Regexp.new(/(Table|Figure|Section)[ \n]\\ref/) ] = "Table, Figure, and Section refs should have a non-breaking space"
+PreCensored_phrases[ 
+  Regexp.new(/(table|figure|section)~\\ref/) ] = "Table, Figure, and Section refs should be capitalized"
 PreCensored_phrases[ 
   Regexp.new(/\\url\{(?!http|ftp|rtsp|mailto)/) ] = "~\url{} should start with http:// (or ftp or rtsp or maybe mailto)."
 
