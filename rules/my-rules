@@ -41,6 +41,7 @@ rely upon % phrase rely on is good enough
 relies upon % phrase relies on is good enough
 record route packets? % phrase hyphenate record-route packets
 record-route; % phrase leave record route alone if not modifying something else
+we accomplish this  % phrase verbose way to get active voice.
 refers to the % phrase you're being wimpy in the definition.  use "is"
 \\emph\{[a-zA-Z ]*\} refers to % syntax you're being wimpy in the definition.
 loss off % phrase loss of?
