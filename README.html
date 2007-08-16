@@ -1,10 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <title>How to use the style checker</title>
-  </head>
-
-  <body>
+<!-- this is intentionally an html fragment so that it can be included -->
     <h1>style-check.rb</h1> 
 
     <p>The code described in this README parses
@@ -56,6 +50,11 @@
     exactly. They are case-sensitive.  Any regular
     expression will do.  As a hint, "\b" will match some
     non-word character, like a space or newline.
+<pre class="example">
+[ ],       <span class="examplecomment">% syntax whitespace before comma seems wrong.</span>
+''[\.,]    <span class="examplecomment">% syntax end quotes go outside punctuation like . and , </span>
+[ ]-[ ]    <span class="examplecomment">% syntax a hyphen surrounded by space should probably be an emdash '---'</span>
+</pre>
 
     <h2>Type 2: Capitalize</h2> Capitalize expressions match
     whole words, and are case-sensitive.  Such expressions
@@ -65,6 +64,15 @@
     transparently wrapped with "\b"s to ensure that only
     whole words are matched.
 
+<pre class="example">
+Planetlab   <span class="examplecomment">% capitalize PlanetLab</span>
+planetlab   <span class="examplecomment">% capitalize PlanetLab</span>
+ccdf        <span class="examplecomment">% capitalize</span>
+cisco       <span class="examplecomment">% capitalize the company name</span>
+internet    <span class="examplecomment">% capitalize unless talking about an internet other than the Internet</span>
+ttl         <span class="examplecomment">% capitalize</span>
+</pre>
+
     <h2>Type 3: Phrase</h2> Phrases match longer phrases
     such as "the foreseeable future" or <a
     href="http://www.plainenglish.co.uk/pressrelease.html">"at
@@ -73,12 +81,35 @@
     case sensitive.  Some phrases that should be forbidden
     include double words.
 
+<pre class="example">
+[^r][^c][^h] impact           <span class="examplecomment">% phrase "effect", "result", though nsf likes "research impact"</span>
+absolutely essential          <span class="examplecomment">% phrase essential</span>
+few in number                 <span class="examplecomment">% phrase few</span>
+the the                       <span class="examplecomment">% phrase apparent double word.</span>
+(quite|more|very|most) unique <span class="examplecomment">% phrase unique is.</span>
+a large number of             <span class="examplecomment">% phrase you mean "many"</span>
+the way in which              <span class="examplecomment">% phrase should be "how" or "" </span>
+live in a vacuum              <span class="examplecomment">% phrase a tired metaphor that makes me want to vomit.  </span>
+</pre>
+
     <h2>Type 4: Spelling</h2> Spelling expressions are
     internally handled just like phrases.  These are useful
     for common misspellings or typo's.  Perhaps you habitually
     misspell lose as loose and would prefer to have a checker
     complain.  I habitually misspell measurment, secrurity,
     and experiements.
+
+<pre class="example">
+experiements <span class="examplecomment">% spelling</span>
+measurment   <span class="examplecomment">% spelling</span>
+secrurity    <span class="examplecomment">% spelling</span>
+taht         <span class="examplecomment">% spelling</span>
+teh          <span class="examplecomment">% spelling</span>
+privledge    <span class="examplecomment">% spelling "privilege" I misspell it every way possible.</span>
+privlege     <span class="examplecomment">% spelling "privilege" I misspell it every way possible.</span>
+priviledge   <span class="examplecomment">% spelling "privilege" I misspell it every way possible.</span>
+queueing     <span class="examplecomment">% spelling I'd love to spell it this way, but spellchecker whines.</span>
+</pre>
 
     <h2>Type -1: Ignored Commands</h2> Ignore the parameter
     to this command.  If only spell checkers were this cool.
@@ -91,6 +122,11 @@
     before the rest of the rules are checked, so it is
     possible that other rules may need to take this into
     account.
+
+<pre class="example">
+todo      <span class="examplecomment">% ignoredcommand</span>
+texttt    <span class="examplecomment">% ignoredcommand</span>
+</pre>
 
     <h2>Built-in checking</h2>
     <p>In addition to configurable rules, the style checker
@@ -160,10 +196,6 @@
     and fun and should help you think about writing better,
     and reference that may help answer harder questions.
 
-    An effective way to understand the frustration of bad
-    writing is to read a pretentious political science text
-    asking yourself, "could this be written more clearly?"
-    
     <h2>Entertainment</h2>
     The Elements of Style, by Strunk and White<br>
     <a href="http://www.bartleby.com/141/">http://www.bartleby.com/141/</a>
@@ -214,7 +246,7 @@
     <p>Kurt Partridge for encouraging me to release this thing. 
     <p>Vibha Sazawal for reminding me often that there is more to writing than style. 
     <p>Rich Wolski for introducing me to Strunk and White, the gateway drug.
-    <p>Jacob Martin reported the first bug, and packaged style-check for <a href="http://www.gentoo-portage.com/dev-tex/style-check">gentoo</a>.
+    <p>Jacob Martin reported the first bug and packaged style-check for <a href="http://www.gentoo-portage.com/dev-tex/style-check">gentoo</a>.
     
     <hr>
     <address><a href="mailto:nspring@cs.umd.edu">Neil Spring</a></address>

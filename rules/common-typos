@@ -3,8 +3,8 @@ a the                % phrase double article
 [ ],                 % syntax whitespace before comma seems wrong.
 ''[\.,]              % syntax end quotes go outside punctuation like . and ,
 Figure Figure        % phrase pizza pizza.
-[ ]-[ ]              % syntax a hyphen surrounded by space should probably be an emdash '--'
-[0-9]-[0-9]          % syntax use an emdash '--' for ranges
+[ ]-[ ]              % syntax a hyphen surrounded by space should probably be an emdash '---'
+[0-9]-[0-9]          % syntax use an endash '--' for ranges
 [0-9]ms              % syntax put a space between the number and the unit.
 [^egs]\. [a-z]       % syntax a period usually ends a sentence, and sentences should start with a capital; doesn't apply for i.e., 
 \.  [a-z]            % syntax a period usually ends a sentence, and sentences should start with a capital; "i.e." should have a comma following.
