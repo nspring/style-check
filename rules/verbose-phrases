@@ -29,6 +29,7 @@ one should note                     % phrase just write it.
 note that                           % phrase is the rest of the paper less notable?
 we note                             % phrase is the rest of the paper less notable?
 note however that                   % phrase is the rest of the paper less notable?
+it is important to note             % phrase is the rest of the paper less notable?
 really                              % phrase probably doesn't add; if you think it does, use "r{}eally" -- don't change to 'in fact'
 rigorously                          % spelling probably doesn't add, and I rarely do anything with rigor
 the way in which                    % phrase should be "how" or "" 
@@ -218,3 +219,5 @@ of size larger than % phrase "of size" is probably redundant
 might potentially % phrase "might"
 in the context of % phrase "in" avoid, if possible.
 increase the amount of % phrase probably just increase.
+in addition, we also % phrase pick.
+overhead efficiency % phrase huh?

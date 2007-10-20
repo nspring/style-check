@@ -18,6 +18,7 @@ try and               % phrase "try to", though if you're using try as a noun in
 impact of             % phrase not a useful metaphor; try evaluation, success, effect, value.
 including [^\.]*etc\. % syntax "including" tells of a non-exclusive list, so "etc." is redundant.  This rule will misfire if you have two lists in your sentence, but you shouldn't do that either. ;)
 includes [^\.]*etc\.  % syntax "includes" tells of a non-exclusive list, so "etc." is redundant.  This rule will misfire if you have two lists in your sentence, but you shouldn't do that either. ;)
+and etc\.             % phrase come on. learn some latin.
 AT&T                  % syntax you poor thing, this won't compile.
 doesn't               % phrase be formal.
 be occur              % phrase what happens when I'm indecisive about what follows "can"
