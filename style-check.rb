@@ -55,7 +55,7 @@ end
 
 $exit_status = 0
 
-ignoredCommands = "ref|href|url|input|cite|nocite|cline|newcommand|includegraphics|begin|end|label".split('|')
+ignoredCommands = "ref|href|url|input|bibliography|cite|nocite|cline|newcommand|includegraphics|begin|end|label".split('|')
 PctCensored_phrases = Hash.new  # before stripping comments
 PreCensored_phrases = Hash.new  # before stripping cites
 Censored_phrases = Hash.new     # the rest.

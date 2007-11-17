@@ -27,6 +27,7 @@ makes a new                         % phrase should be "creates"
 may not chose                       % phrase "may not" is future tense; "chose" is past.
 one should note                     % phrase just write it.
 note that                           % phrase is the rest of the paper less notable?
+Note, that                          % syntax not only should you not "note that", no comma after note.
 we note                             % phrase is the rest of the paper less notable?
 note however that                   % phrase is the rest of the paper less notable?
 it is important to note             % phrase is the rest of the paper less notable?
@@ -67,6 +68,8 @@ gotten                              % phrase try "helped" ?
 live in a vacuum                    % phrase a tired metaphor that makes me want to vomit.  
 positive impact                     % phrase try "benefit"
 negative impact                     % phrase try "harm" or "consequences"
+adverse impact                      % phrase try "harm" or "consequences"
+adversely impacting                 % phrase try "harming" or "hurting"
 discuss the issues of               % phrase could probably drop "the issues of" unless there's a list
 the presence of                     % phrase not far from 'is', 'has', etc.
 does not allow                      % phrase consider "forbids" or "prohibits"
