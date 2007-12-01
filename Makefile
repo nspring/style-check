@@ -1,5 +1,5 @@
 RULESFILES=bad-words barrass common-typos foolish-phrases latex-checking misspellings my-rules  \
-	networking-research passive-voice verbose-phrases 
+	networking-research passive-voice verbose-phrases day-gastel
 PACKAGE=style-check
 VERSION=0.11
 SYSCONFDIR=/etc/$(PACKAGE).d
