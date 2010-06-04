@@ -112,8 +112,9 @@ PathList.map { |rulefilename|
 
 # $prefilter = Regexp.new( "(" + Censored_phrases.keys.map { |r| r.source}.join("|") + ")" )
 
+# thanks to Adin Rivera for reporting a little bug in the next line.
 PreCensored_phrases[ 
-  Regexp.new(/\.~?\\cite/) ] = "~\cite{} should precede the period."
+  Regexp.new(/\.~?\\cite/) ] = "~\\cite{} should precede the period."
 PreCensored_phrases[ 
   Regexp.new(/\b(from|in|and|with|see)[~ ]+\\cite/) ] = "don't cite in the sentence as 'in [x]', cites are not nouns."
 PreCensored_phrases[ 
