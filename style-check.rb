@@ -116,7 +116,7 @@ PathList.map { |rulefilename|
 PreCensored_phrases[ 
   Regexp.new(/\.~?\\cite/) ] = "~\\cite{} should precede the period."
 PreCensored_phrases[ 
-  Regexp.new(/\b(from|in|and|with|see)[~ ]+\\cite/) ] = "don't cite in the sentence as 'in [x]', cites are not nouns."
+  Regexp.new(/\b(from|in|and|with|see)[~ ]+\\cite/) ] = "Don't cite in the sentence as 'in [x]', cites are not nouns.  Prefer: Smith et al.~\\cite{...} show ... ."
 PreCensored_phrases[ 
   Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
 PreCensored_phrases[ 
@@ -149,7 +149,7 @@ def do_cns(line, file, linenum, phra_hash)
   r = nil # so we can keep it as a side-effect of the detect call
   # if m = $prefilter.match(line) then
     if(phra_hash.keys.detect { |r| m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n")) } ) then
-      matchedlines = ( m.end(0) <= line.index("\n") ) ? line.gsub(/\n.*/,'') : line.chomp
+      matchedlines = ( m.end(0) <= ( line.index("\n") or 0 ) ) ? line.gsub(/\n.*/,'') : line.chomp
       puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
       if($VERBOSE && phra_hash[r]) then
         puts "  " + phra_hash[r]
