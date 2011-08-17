@@ -35,6 +35,16 @@
 # - expressions with % in them won't be matched; the %
 # character is reserved for explanatory text.
 
+# if run with -g, insert a space between line and column,
+# so that gedit linkparser.py at least parses the file and 
+# line number
+Gedit_Mode = if(ARGV.include?("-g"))
+               ARGV.delete("-g")
+               true
+             else
+               false
+             end
+
 if(ARGV[0] == "-v") then
   ARGV.shift
   $VERBOSE = true
@@ -124,7 +134,7 @@ PreCensored_phrases[
 PreCensored_phrases[ 
   Regexp.new(/(table|figure|section)~\\ref/) ] = "Table, Figure, and Section refs should be capitalized"
 PreCensored_phrases[ 
-  Regexp.new(/\\url\{(?!http|ftp|rtsp|mailto)/) ] = "~\url{} should start with http:// (or ftp or rtsp or maybe mailto)."
+  Regexp.new(/\\url\{(?!http|ftp|rtsp|mailto)/) ] = "~\\url{} should start with http:// (or ftp or rtsp or maybe mailto)."
 
 PctCensored_phrases[ 
   Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
@@ -147,15 +157,17 @@ def do_cns(line, file, linenum, phra_hash)
   # end
   m = nil
   r = nil # so we can keep it as a side-effect of the detect call
+  detected = nil
+  windows_detect_bug_avoider = nil
   # if m = $prefilter.match(line) then
-    if(phra_hash.keys.detect { |r| m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n")) } ) then
+    if(detected = phra_hash.keys.detect { |r| m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n"))  } ) then
       matchedlines = ( m.end(0) <= ( line.index("\n") or 0 ) ) ? line.gsub(/\n.*/,'') : line.chomp
-      puts "%s:%d:%d: %s (%s)" % [ file, linenum, m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
-      if($VERBOSE && phra_hash[r]) then
-        puts "  " + phra_hash[r]
-        phra_hash[r] = nil # don't print the reason more than once
+      puts "%s:%d:%s%d: %s (%s)" % [ file, linenum, Gedit_Mode ? ' ': '', m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
+      $exit_status = 1 if(!phra_hash[detected] =~ /\?\s*$/) 
+      if($VERBOSE && phra_hash[detected]) then
+        puts "  " + phra_hash[detected]
+        phra_hash[detected] = nil # don't print the reason more than once
       end
-      $exit_status = 1 if(!phra_hash[r] =~ /\?\s*$/) 
     end
   # end
 end

@@ -1,7 +1,7 @@
 RULESFILES=bad-words barrass common-typos foolish-phrases latex-checking misspellings my-rules  \
 	networking-research passive-voice verbose-phrases day-gastel
 PACKAGE=style-check
-VERSION=0.13
+VERSION=0.14
 SYSCONFDIR=/etc/$(PACKAGE).d
 PREFIX=/usr/local
 bindir=$(PREFIX)/bin
