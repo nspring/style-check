@@ -120,6 +120,10 @@ PathList.map { |rulefilename|
   end
 }
 
+Censored_phrases.delete_if { |regex,reason|
+  reason.split(/\s+/)[1] =~ /ignore/
+}
+
 # $prefilter = Regexp.new( "(" + Censored_phrases.keys.map { |r| r.source}.join("|") + ")" )
 
 # thanks to Adin Rivera for reporting a little bug in the next line.
