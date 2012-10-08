@@ -252,7 +252,14 @@ texttt    <span class="examplecomment">% ignoredcommand</span>
     <p>Jacob Martin reported the first bug, packaged style-check for <a href="http://www.gentoo-portage.com/dev-tex/style-check">gentoo</a>, and contributed a ruleset based 
 on <a href="www.amazon.com/ How-Write-Publish-Scientific-Paper/dp/0313330271">Day 
 and Gastel, "How to Write and Publish a Scientific Paper"</a>.</p>
-    <p>Indika Meedeniya noticed a few more bugs and suggested compatibility with gedit.</p>
+<p>Indika Meedeniya noticed a few more bugs and suggested compatibility with gedit.</p>
+<p>Rudolf M&uuml;hlbauer suggested: <blockquote>
+I use it in conjunction with vim [:make | copen]:
+<pre>
+~/.vim/ftplugin/tex.vim:
+set makeprg=~/opt/style-check-0.14/style-check.rb\ -v\ %
+</pre>
+</blockquote>
     
     <hr>
     <address><a href="mailto:nspring@cs.umd.edu">Neil Spring</a></address>
