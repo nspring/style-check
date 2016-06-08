@@ -195,6 +195,8 @@ Rudolf Mühlbauer suggested:
 > set makeprg=~/opt/style-check-0.14/style-check.rb\ -v\ %
 > </pre>
 
+Vinícius Vielmo Cogo provided an html output scheme.
+
 * * *
 
 <address>[Neil Spring](mailto:nspring@cs.umd.edu)</address>

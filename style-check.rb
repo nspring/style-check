@@ -38,30 +38,25 @@
 # if run with -g, insert a space between line and column,
 # so that gedit linkparser.py at least parses the file and 
 # line number
-Gedit_Mode = if(ARGV.include?("-g"))
-               ARGV.delete("-g")
-               true
-             else
-               false
-             end
 
-if(ARGV[0] == "-v") then
-  ARGV.shift
-  $VERBOSE = true
-end
+require 'digest'
+require 'optparse'
 
-override_rule_paths = nil
-if(ARGV[0] == "-r") then
-  ARGV.shift
-  param = File.expand_path(ARGV.shift)
-  if(test(?d, param)) then
-    override_rule_paths = Dir.glob(param + "/*")
-  elsif(test(?f, param)) then
-    override_rule_paths = param
-  else
-    raise "what is that rule path you tried to specify?"
-  end
-end
+$options = Hash.new
+OptionParser.new do |parser|
+  parser.on("-g", "--gedit", "Use output suitable for gedit to find file and line") { $options[:gedit] = true }
+  parser.on("-v", "--verbose", "Include explanations in output the first time a rule is matched") { $options[:verbose] = true }
+  parser.on("-w", "--web-output", "Generate output in HTML") { $options[:web_output] = true }
+  parser.on("-rPATH", "--rule-path=PATH", "Override rule path, either a file or directory") { |param|
+    if(test(?d, param)) then
+      $options[:override_rule_paths] = Dir.glob(param + "/*")
+    elsif(test(?f, param)) then
+      $options[:override_rule_paths] = param
+    else
+      raise "what is that rule path you tried to specify?"
+    end
+  }
+end.parse!
 
 $exit_status = 0
 
@@ -69,8 +64,8 @@ ignoredCommands = "ref|href|url|input|bibliography|cite|nocite|cline|newcommand|
 PctCensored_phrases = Hash.new  # before stripping comments
 PreCensored_phrases = Hash.new  # before stripping cites
 Censored_phrases = Hash.new     # the rest.
-PathList = if(override_rule_paths) then 
-             override_rule_paths
+PathList = if($options[:override_rule_paths]) then 
+             $options[:override_rule_paths]
            else
              Dir.glob("/etc/style-check.d/*") + 
                  Dir.glob(ENV["HOME"] + "/.style-check.d/*") + 
@@ -120,6 +115,38 @@ PathList.map { |rulefilename|
   end
 }
 
+def emit_html_file_header 
+  if($options[:web_output]) then
+	puts "<html>\n<head>\n<title>style_checker.rb</title>\n</head>\n<style>\nform{width:100%; text-align:center;font-size:10pt;}\ninput{vertical-align:bottom;margin-left:30px;}\ntable { width:95%; border-collapse: collapse; font-size:10pt; margin:10px 2.5%}\n.spelling th, #mySpelling{background-color:#FFC1C1;}\n.capitalize th, #myCapitalize{background-color:#FFF7C1;}\n.syntax th, #mySyntax{background-color:#C1E0FF;}\n.phrase th, #myPhrase{background-color:#C1FFD1;}\n#myUndefined{margin-left:30px;background-color: #eee;}\ntable, th, td { border: 1px solid black; padding: 5px;}\ntr{ width:100%}\ndiv{display:inline;}th{ text-align:left; width: 10%; background-color: #eee;}\ntd{ width:90%;}\n#myTotal{width:100%;margin-left:15px;font-size:10pt;}\ntable button{float:right; font-size:8pt; border: 1px solid black;width:15px;text-align:center;}\np{ font-size: 10pt; text-align: center;}\n</style>\n<body><form id=\"aform\"><input type=\"checkbox\" id=\"inSpelling\" name=\"type\" value=\"spelling\" checked=\"checked\"><div id=\"mySpelling\">Spelling</div><input type=\"checkbox\" id=\"inCapitalize\" name=\"type\" value=\"capitalize\" checked=\"checked\"><div id=\"myCapitalize\">Capitalize</div><input type=\"checkbox\" id=\"inSyntax\" name=\"type\" value=\"syntax\" checked=\"checked\"><div id=\"mySyntax\">Syntax</div><input type=\"checkbox\" id=\"inPhrase\" name=\"type\" value=\"phrase\" checked=\"checked\"><div id=\"myPhrase\">Phrase</div><div id=\"myUndefined\">Undefined</div><br /><br /><div id=\"myTotal\"></div></form>"
+  end
+end
+def emit_html_file_heading(f)
+  if($options[:web_output]) then
+    puts "<h1>%s</h1>" % [ f ]
+  end
+end
+
+def emit_html_warning(file, linenum, column, problem, matchedlines, phra_hash, detected)
+  if($options[:web_output]) then
+    id = Digest::SHA1.hexdigest(problem.to_s+file.to_s+linenum.to_s)
+    puts "<table id=\"#{id}\" class=\""+phra_hash[detected].split(/\s+/)[0]+"\">"
+	puts "<tr><th>File</th><td>"+file.to_s+" (line: "+linenum.to_s
+    puts ", column: "+column.to_s if column
+    puts ")<div class=\"x\"><button onclick=\"myFunction('#{id}');\">X</button></div></td></tr>"
+	puts "<tr><th>Original</th><td>%s</td></tr>" % [ matchedlines ]
+	puts "<tr><th>Problem</th><td>%s</td></tr>" % [ problem ]
+	if (column && phra_hash[detected]) then
+      solution=phra_hash[detected].split("(matched")
+	  puts "<tr><th>Solution</th><td>%s</td></tr>" % [ solution[0] ]
+	  if (solution[1] != nil ) then
+      	puts "<tr><th>Trigger</th><td>%s</td></tr>" % [ solution[1][0..-2] ]
+      end
+	end
+    puts "</table>"
+  end
+end
+      
+
 Censored_phrases.delete_if { |regex,reason|
   reason.split(/\s+/)[1] =~ /ignore/
 }
@@ -128,20 +155,20 @@ Censored_phrases.delete_if { |regex,reason|
 
 # thanks to Adin Rivera for reporting a little bug in the next line.
 PreCensored_phrases[ 
-  Regexp.new(/\.~?\\cite/) ] = "~\\cite{} should precede the period."
+  Regexp.new(/\.~?\\cite/) ] = "syntax ~\\cite{} should precede the period."
 PreCensored_phrases[ 
-  Regexp.new(/\b(from|in|and|with|see)[~ ]+\\cite/) ] = "Don't cite in the sentence as 'in [x]', cites are not nouns.  Prefer: Smith et al.~\\cite{...} show ... ."
+  Regexp.new(/\b(from|in|and|with|see)[~ ]+\\cite/) ] = "syntax don't cite in the sentence as 'in [x]', cites are not nouns.  Prefer: Smith et al.~\\cite{...} show ... ."
 PreCensored_phrases[ 
-  Regexp.new(/[^\.\n]\n\n/) ] = "paragraphs should end with a sentence end"
+  Regexp.new(/[^\.\n]\n\n/) ] = "syntax paragraphs should end with a sentence end"
 PreCensored_phrases[ 
-  Regexp.new(/(Table|Figure|Section)[ \n]\\ref/) ] = "Table, Figure, and Section refs should have a non-breaking space"
+  Regexp.new(/(Table|Figure|Section)[ \n]\\ref/) ] = "syntax Table, Figure, and Section refs should have a non-breaking space"
 PreCensored_phrases[ 
-  Regexp.new(/(table|figure|section)~\\ref/) ] = "Table, Figure, and Section refs should be capitalized"
+  Regexp.new(/(table|figure|section)~\\ref/) ] = "syntax Table, Figure, and Section refs should be capitalized"
 PreCensored_phrases[ 
-  Regexp.new(/\\url\{(?!http|ftp|rtsp|mailto)/) ] = "~\\url{} should start with http:// (or ftp or rtsp or maybe mailto)."
+  Regexp.new(/\\url\{(?!http|ftp|rtsp|mailto)/) ] = "syntax ~\\url{} should start with http:// (or ftp or rtsp or maybe mailto)."
 
 PctCensored_phrases[ 
-  Regexp.new(/[0-9]%/) ] = "a percent following a number is rarely an intended comment."
+  Regexp.new(/[0-9]%/) ] = "syntax a percent following a number is rarely an intended comment."
 # PctCensored_phrases[ 
 #   Regexp.new(/[<>]/) ] = "a less than or greater than outside math mode shows other characters."
 
@@ -166,10 +193,17 @@ def do_cns(line, file, linenum, phra_hash)
   # if m = $prefilter.match(line) then
     if(detected = phra_hash.keys.detect { |r| m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n"))  } ) then
       matchedlines = ( m.end(0) <= ( line.index("\n") or 0 ) ) ? line.gsub(/\n.*/,'') : line.chomp
-      puts "%s:%d:%s%d: %s (%s)" % [ file, linenum, Gedit_Mode ? ' ': '', m.begin(0)+1, matchedlines, m.to_s.tr("\n", ' ') ]
+      column = m.begin(0) + 1
+      problem = m.to_s.tr("\n", ' ') 
+      if($options[:web_output]) then
+        emit_html_warning(file, linenum, column, problem, matchedlines, phra_hash, detected)
+      else
+        puts "%s:%d:%s%d: %s (%s)" % [ file, linenum, $options[:gedit] ? ' ': '', column, matchedlines, problem ]
+      end
+
       $exit_status = 1 if(!phra_hash[detected] =~ /\?\s*$/) 
-      if($VERBOSE && phra_hash[detected]) then
-        puts "  " + phra_hash[detected]
+      if($options[:verbose] && phra_hash[detected]) then
+        puts "Solution: " + phra_hash[detected]
         phra_hash[detected] = nil # don't print the reason more than once
       end
     end
@@ -185,7 +219,9 @@ Input_files.delete_if { |f|
     false
   end  
 }
+emit_html_file_header 
 Input_files.each { |f|
+  emit_html_file_heading(f)
   in_multiline_comment = 0
   in_multiline_verbatim = false
   in_multiline_equation = false
@@ -231,11 +267,85 @@ Input_files.each { |f|
           #puts "%s:%d: argh: %s" % [ f, i, checkstring.gsub(/\n/, '\n') ];
         #end
         if(checkstring =~ /[a-z0-9][^\.\:\!\?\n}]\n\n/) then
-          puts "%s:%d: apparent bad paragraph break: %s" % [ 
-            f, i+1, checkstring.gsub(/\n/, '\n') ];
+          if($options[:web_output]) then
+            emit_html_warning(f, j, nil, "apparent bad paragraph break", checkstring.gsub(/\n/, '\n'), phra_hash, nil)
+      	  else
+            puts "\n################################################################################\n%s:l%d: apparent bad paragraph break: %s" % [ 
+                   f, i+1, checkstring.gsub(/\n/, '\n') ];
+          end
         end
       end
     end
   }
 }
-    
+if($options[:web_output]) then
+web_trailer = <<EOF
+<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js\"></script>
+<script type=\"text/javascript\">
+$('#aform').on
+(
+	'change', 'input[type=checkbox]', function(e) 
+	{ 
+		if (this.checked)
+		{  
+			switch(this.value){
+				case 'phrase': $(\".phrase\").show(); break;
+				case 'syntax':  $(\".syntax\").show(); break;
+				case 'capitalize':  $(\".capitalize\").show(); break;
+				case 'spelling':  $(\".spelling\").show(); break;
+				case 'undefined': $(\".undefined\").show(); break;
+			}
+		} else {
+			switch(this.value){
+				case 'phrase': $(\".phrase\").hide(); break;
+				case 'syntax':  $(\".syntax\").hide(); break;
+				case 'capitalize':  $(\".capitalize\").hide(); break;
+				case 'spelling':  $(\".spelling\").hide(); break;
+				case 'undefined': $(\".undefined\").hide(); break;
+			}
+		}
+			updateCounters();
+	}	
+);
+$( window ).load(function() 
+{
+		updateCounters();
+});
+function myFunction(theHash){
+	theHash = \"#\"+theHash;
+	$(theHash).remove();
+		updateCounters();
+}
+
+function updateCounters(){
+	$(\"#myPhrase\").html( \"Phrase \(\" + $(\".phrase\").length+\")\"); 
+	$(\"#mySyntax\").html( \"Syntax \(\" + $(\".syntax\").length+\")\"); 
+	$(\"#myCapitalize\").html( \"Capitalize \(\" + $(\".capitalize\").length+\")\"); 
+	$(\"#mySpelling\").html( \"Spelling \(\" + $(\".spelling\").length+\")\");	
+	$(\"#myTotal\").html( \"Presenting \" + countVisible() +\" suggestions out of \"+$('table').length + \" identified \");	
+}
+
+function countVisible() {
+	aCount=0;
+	if($('#inSpelling').is(':checked')){
+		aCount=aCount+$('.spelling').length;
+	}
+	if($('#inPhrase').is(':checked')){
+		aCount=aCount+$('.phrase').length;
+	}
+	if($('#inSyntax').is(':checked')){
+		aCount=aCount+$('.syntax').length;
+	}
+	if($('#inCapitalize').is(':checked')){
+		aCount=aCount+$('.capitalize').length;
+	}
+	return aCount;
+}
+
+</script>
+<p> This HTML was generated by a modified version of <a href=\"http://www.cs.umd.edu/~nspring/software/style-check-readme.html\" target=\"_blank\">style-check.rb</a> software.</p>\n</body>\n</html>"
+EOF
+puts web_trailer
+end
+
+exit $exit_status

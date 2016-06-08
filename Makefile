@@ -47,7 +47,16 @@ README: README.html
 	cat $< | w3m -dump -T text/html > $@
 
 check:
-	./style-check.rb -r rules test-clean.tex
+	@echo Should succeed
+	./style-check.rb -r rules test-clean.tex 
+	@echo Should report nothing
+	!(./style-check.rb -r rules test-clean.tex | grep clean)
+	@echo Should report something
+	./style-check.rb -r rules test-dirty.tex | grep dirty > /dev/null
+	@echo Checks for space after line before column.
+	./style-check.rb -g -r rules test-dirty.tex  | grep "1: 32" > /dev/null
+	@echo Checks for html output
+	./style-check.rb -w -r rules test-dirty.tex  | grep html > /dev/null
 
 upload: $(distdir).tar.gz
 	scp README.html ringding.cs.umd.edu:public_html/software/style-check-readme.html
