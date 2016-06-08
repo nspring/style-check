@@ -35,7 +35,9 @@ distdir: README Makefile
 	for f in $(RULESFILES); do \
 		cp rules/$$f $(distdir)/rules; \
 	done
-	cp Makefile COPYING style-check.rb README README.html test-*.tex $(distdir)
+	cp Makefile COPYING style-check.rb README README.html $(distdir)
+	mkdir $(distdir)/test
+	cp test/*.tex $(distdir)/test
 
 $(distdir).tar.gz: distdir 
 	tar cvfz $(distdir).tar.gz $(distdir)
@@ -48,15 +50,16 @@ README: README.html
 
 check:
 	@echo Should succeed
-	./style-check.rb -r rules test-clean.tex 
+	./style-check.rb -r rules test/clean.tex 
 	@echo Should report nothing
-	!(./style-check.rb -r rules test-clean.tex | grep clean)
+	!(./style-check.rb -r rules test/clean.tex | grep clean)
 	@echo Should report something
-	./style-check.rb -r rules test-dirty.tex | grep dirty > /dev/null
+	./style-check.rb -r rules test/dirty.tex | grep dirty > /dev/null
 	@echo Checks for space after line before column.
-	./style-check.rb -g -r rules test-dirty.tex  | grep "1: 32" > /dev/null
+	./style-check.rb -g -r rules test/dirty.tex  | grep "1: 32" > /dev/null
 	@echo Checks for html output
-	./style-check.rb -w -r rules test-dirty.tex  | grep html > /dev/null
+	./style-check.rb -w -r rules test/dirty.tex  | grep html > /dev/null
+	./style-check.rb -r rules test/math.tex  
 
 upload: $(distdir).tar.gz
 	scp README.html ringding.cs.umd.edu:public_html/software/style-check-readme.html
