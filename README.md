@@ -153,8 +153,7 @@ Thesis Errors
 How to Avoid Colloquial (Informal) Writing
 [http://www.wikihow.com/Avoid-Colloquial-%28Informal%29-Writing](http://www.wikihow.com/Avoid-Colloquial-%28Informal%29-Writing)
 
-Henning Schulzrinne's Notes
-
+Henning Schulzrinne's Notes 
 [http://www.cs.columbia.edu/~hgs/etc/writing-style.html](http://www.cs.columbia.edu/~hgs/etc/writing-style.html)
 
 ## Reading that takes work (and reference)
@@ -169,8 +168,11 @@ Line by Line: How to Edit Your Own Writing, by Claire Cook.
 
 Michael Haardt wrote GNU [diction](http://www.gnu.org/software/diction/diction.html), which is similar in that it finds and complains about bad phrases, but different in that it also notes questionable phrases (such as any use of "affect") and does not expect to check LaTeX source. Style-check focuses on forbidden phrases and common typographic errors in LaTeX code.
 
-## To download
+## To install
 
+<pre class="example">
+gem install style-check 
+</pre>
 [http://www.cs.umd.edu/~nspring/software/style-check-current.tar.gz](http://www.cs.umd.edu/~nspring/software/style-check-current.tar.gz)
 
 # Thanks
@@ -196,5 +198,3 @@ Rudolf Mühlbauer suggested:
 * * *
 
 <address>[Neil Spring](mailto:nspring@cs.umd.edu)</address>
-
-Last modified: Wed Aug 17 09:06:10 EDT 2011
