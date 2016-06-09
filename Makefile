@@ -60,6 +60,8 @@ check:
 	@echo Checks for html output
 	./style-check.rb -w -r rules test/dirty.tex  | grep html > /dev/null
 	./style-check.rb -r rules test/math.tex  
+	./style-check.rb test/math.tex  
+	./style-check.rb --help > /dev/null
 
 upload: $(distdir).tar.gz
 	scp README.html ringding.cs.umd.edu:public_html/software/style-check-readme.html

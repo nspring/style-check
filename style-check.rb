@@ -41,20 +41,48 @@
 
 require 'digest'
 require 'optparse'
+require 'pathname'
+
+# pathname concatenation joins with '/'.
+Home = Pathname.new(ENV["HOME"])
 
 $options = Hash.new
+
+# can set options via ~/.style-checkrc.  Settable options include:
+# gedit
+# verbose
+# web_output
+# override_rule_paths=PATH
+stylecheckrc = Home + ".style-checkrc"
+if(stylecheckrc.readable?) then
+  File.open(stylecheckrc).each do |ln|
+    o,val = ln.chomp.split('=')
+    val = true unless val
+    $options[o.to_sym] = val 
+  end
+end
+
 OptionParser.new do |parser|
+  parser.banner="Usage: style-check.rb [options] tex-files-to-check"
   parser.on("-g", "--gedit", "Use output suitable for gedit to find file and line") { $options[:gedit] = true }
-  parser.on("-v", "--verbose", "Include explanations in output the first time a rule is matched") { $options[:verbose] = true }
-  parser.on("-w", "--web-output", "Generate output in HTML") { $options[:web_output] = true }
-  parser.on("-rPATH", "--rule-path=PATH", "Override rule path, either a file or directory") { |param|
+  parser.on("-v[LEVEL]", "--verbose", "Explain each rule the first time it is matched, or every time if using -vv") { |opt|
+    $options[:verbose] = true
+    $options[:really_verbose] = opt
+  }
+  parser.on("-w", "--web_output", "Generate output in HTML") { $options[:web_output] = true }
+  parser.on("-rPATH", "--override_rule_paths=PATH", "Override rule path, can be either a file or directory") { |param|
     if(test(?d, param)) then
       $options[:override_rule_paths] = Dir.glob(param + "/*")
     elsif(test(?f, param)) then
       $options[:override_rule_paths] = param
     else
-      raise "what is that rule path you tried to specify?"
+      puts "Could not find rule file or directory at #{param}" 
+      exit 1
     end
+  }
+  parser.on("-h", "--help", "Shows this help") {
+    puts parser
+    puts "Long options may also be set including them in ~/.style-checkrc"
   }
 end.parse!
 
@@ -68,8 +96,8 @@ PathList = if($options[:override_rule_paths]) then
              $options[:override_rule_paths]
            else
              Dir.glob("/etc/style-check.d/*") + 
-                 Dir.glob(ENV["HOME"] + "/.style-check.d/*") + 
-                     [ ENV["HOME"] + "/.style-censor", "./censor-dict", "/etc/style-censor", "./style-censor" ]
+                 Dir.glob(Home + ".style-check.d/*") + 
+                     [ Home + ".style-censor", "./censor-dict", "/etc/style-censor", "./style-censor" ]
            end
 
 # $prefilter = nil
@@ -183,15 +211,13 @@ De_verb = Regexp.new('\\\\verb(.)[^\1]*\1')
 De_math = Regexp.new('[^\\\\]\$.*[^\\\\]\$|^\$.*[^\\\\]\$')
 
 def do_cns(line, file, linenum, phra_hash)
-  # if line =~ /\\caption/ && file =~ /Mapping/ then
-    # puts "validating: '#{line}'"
-  # end
   m = nil
   r = nil # so we can keep it as a side-effect of the detect call
   detected = nil
   windows_detect_bug_avoider = nil
-  # if m = $prefilter.match(line) then
-    if(detected = phra_hash.keys.detect { |r| m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n"))  } ) then
+  phra_hash.keys.each do |r|
+    if ( m = r.match(line) and (line.index("\n") == nil or m.begin(0) < line.index("\n")) ) then
+      detected = r
       matchedlines = ( m.end(0) <= ( line.index("\n") or 0 ) ) ? line.gsub(/\n.*/,'') : line.chomp
       column = m.begin(0) + 1
       problem = m.to_s.tr("\n", ' ') 
@@ -203,11 +229,12 @@ def do_cns(line, file, linenum, phra_hash)
 
       $exit_status = 1 if(!phra_hash[detected] =~ /\?\s*$/) 
       if($options[:verbose] && phra_hash[detected]) then
-        puts "Solution: " + phra_hash[detected]
-        phra_hash[detected] = nil # don't print the reason more than once
+        puts " " + phra_hash[detected]
+        # don't print the reason more than once, unless using web output
+        phra_hash[detected] = nil unless($options[:web_output] or $options[:really_verbose]) 
       end
     end
-  # end
+  end
 end
  
 Input_files = ARGV
