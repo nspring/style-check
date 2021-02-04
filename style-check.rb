@@ -227,7 +227,7 @@ def do_cns(line, file, linenum, phra_hash)
         puts "%s:%d:%s%d: %s (%s)" % [ file, linenum, $options[:gedit] ? ' ': '', column, matchedlines, problem ]
       end
 
-      $exit_status = 1 if(!phra_hash[detected] =~ /\?\s*$/) 
+      $exit_status = 1 if(! /\?\s*$/.match(phra_hash[detected])) 
       if($options[:verbose] && phra_hash[detected]) then
         puts " " + phra_hash[detected]
         # don't print the reason more than once, unless using web output
