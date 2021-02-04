@@ -183,7 +183,7 @@ Vibha Sazawal for reminding me often that there is more to writing than style.
 
 Rich Wolski for introducing me to Strunk and White, the gateway drug.
 
-Jacob Martin reported the first bug, packaged style-check for [gentoo](http://www.gentoo-portage.com/dev-tex/style-check), and contributed a ruleset based on [Day and Gastel, "How to Write and Publish a Scientific Paper"](http://www.amazon.com/How-Write-Publish-Scientific-Paper/dp/0313330271).
+Jacob Martin reported the first bug, packaged style-check for [gentoo](https://packages.gentoo.org/packages/dev-tex/style-check), and contributed a ruleset based on [Day and Gastel, "How to Write and Publish a Scientific Paper"](http://www.amazon.com/How-Write-Publish-Scientific-Paper/dp/0313330271).
 
 Indika Meedeniya noticed a few more bugs and suggested compatibility with gedit.
 
