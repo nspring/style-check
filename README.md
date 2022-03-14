@@ -199,4 +199,4 @@ Vinícius Vielmo Cogo provided an html output scheme.
 
 * * *
 
-<address>[Neil Spring](mailto:nspring@cs.umd.edu)</address>
+[Neil Spring](mailto:nspring@cs.umd.edu)
