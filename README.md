@@ -148,7 +148,7 @@ Plain English Campaign
 [http://www.plainenglish.co.uk/](http://www.plainenglish.co.uk/)
 
 Thesis Errors
-[http://core.ecu.edu/psyc/wuenschk/therr.htm](http://core.ecu.edu/psyc/wuenschk/therr.htm)
+[https://core.ecu.edu/wuenschk/Help/ThesisDiss/therr.htm](https://core.ecu.edu/wuenschk/Help/ThesisDiss/therr.htm)
 
 How to Avoid Colloquial (Informal) Writing
 [http://www.wikihow.com/Avoid-Colloquial-%28Informal%29-Writing](http://www.wikihow.com/Avoid-Colloquial-%28Informal%29-Writing)
